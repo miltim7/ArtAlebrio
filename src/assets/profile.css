@@ -1,0 +1,1254 @@
+/* src/assets/profile.css */
+/* Хлебные крошки */
+.breadcrumb-section {
+  padding: 20px 0 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.breadcrumb-container {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #9F9F9F;
+  margin: 0;
+}
+
+.breadcrumb-link {
+  color: #B2B2B2;
+  font-size: 14px;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.breadcrumb-link:hover {
+  color: #5856D2;
+}
+
+.breadcrumb-separator {
+  color: #D0D0D0;
+  font-size: 12px;
+}
+
+.breadcrumb-current {
+  color: #3F3F3F;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.edit-profile-section {
+  padding: 30px 0 5px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.edit-profile-container {
+  width: 1400px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  margin: 5px auto;
+}
+
+.edit-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3F3F3F;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.cover-block {
+  position: relative;
+  height: 200px;
+  margin-bottom: 60px;
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #F5F3FD;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A3A0BF;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.cover-placeholder:hover {
+  transform: scale(1.01);
+}
+
+.cover-placeholder.has-image {
+  background: transparent;
+}
+
+/* Стили ошибок для загрузки изображений */
+.cover-placeholder.error {
+  border: 2px solid #e74c3c;
+  background: #fdf2f2;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(88, 86, 210);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cover-placeholder:hover .upload-overlay {
+  opacity: 1;
+}
+
+.avatar-container {
+  position: absolute;
+  left: 60px;
+  top: calc(100% - 92.5px);
+  z-index: 2;
+}
+
+.avatar-placeholder {
+  width: 185px;
+  height: 185px;
+  border-radius: 50%;
+  background: #E9E7F5;
+  border: 8px solid #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.avatar-placeholder:hover {
+  transform: scale(1.05);
+}
+
+.avatar-placeholder.has-image {
+  background: transparent;
+  padding: 0;
+  display: block;
+  overflow: visible;
+}
+
+.avatar-placeholder.error {
+  border-color: #e74c3c;
+  background: #fdf2f2;
+}
+
+.avatar-image {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.avatar-placeholder img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-top: 15px;
+}
+
+.avatar-placeholder.has-image .avatar-image {
+  width: 170px !important;
+  height: 170px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0 !important;
+}
+
+.avatar-note {
+  font-size: 14px;
+  color: #9A9AAD;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.avatar-overlay {
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.avatar-placeholder:hover .upload-overlay {
+  opacity: 1;
+}
+
+.upload-instructions {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding-left: 240px;
+}
+
+.upload-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3F3F3F;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.requirements {
+  color: #7A7A7A;
+  font-size: 14px;
+  line-height: 1.8;
+  list-style-position: inside;
+  padding-left: 0;
+  text-align: left;
+}
+
+.requirements li {
+  margin-bottom: 12px;
+}
+
+
+.char-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 12px;
+  color: #9F9F9F;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Универсальная система ошибок для всех полей */
+.field-wrapper {
+  position: relative;
+}
+
+.field-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 4px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* 2 секция */
+
+.auth-section {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-container {
+  width: 1400px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  margin: 5px auto 5px auto;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3F3F3F;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.data-table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.data-row {
+  display: flex;
+  align-items: center;
+}
+
+.data-label {
+  width: 180px;
+  color: #3F3F3F;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 477px;
+}
+
+.data-input {
+  width: 100%;
+  height: 55px;
+  background: #F8F8FC;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #3F3F3F;
+  transition: all 0.2s ease;
+}
+
+.data-input::placeholder {
+  color: #9F9F9F;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.data-input:focus {
+  outline: 2px solid #5856D2;
+  outline-offset: -2px;
+}
+
+.data-input.error {
+  border: 2px solid #e74c3c;
+  background: #fdf2f2;
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Стили ошибок для select wrapper */
+.select-wrapper.error {
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+}
+
+.select-wrapper::after {
+  content: ">";
+  font-size: 14px;
+  color: #9F9F9F;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: rotate(90deg) scaleY(1.6);
+  margin-top: -5px !important;
+  pointer-events: none;
+}
+
+.data-select {
+  width: 100%;
+  height: 55px;
+  background: #F8F8FC;
+  border: none;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #9F9F9F;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.data-select:focus {
+  outline: 2px solid #5856D2;
+  outline-offset: -2px;
+}
+
+.data-select.error {
+  border: 2px solid #e74c3c;
+  background: #fdf2f2;
+}
+
+.data-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 3 секция */
+
+.additional-section {
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.additional-container {
+  width: 1400px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  margin: 5px auto 5px auto;
+}
+
+.additional-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3F3F3F;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  width: 180px;
+  color: #3F3F3F;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card-input {
+  letter-spacing: 1px;
+}
+
+.accounts-section {
+  margin-top: 30px;
+}
+
+.accounts-row {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.accounts-label {
+  width: 180px;
+  color: #3F3F3F;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.accounts-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Стили ошибок для соцсетей */
+.accounts-icons.error {
+  padding: 15px;
+  background: #fdf2f2;
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+}
+
+.account-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.account-icon.connected {
+  border: none;
+  background: none;
+}
+
+/* .account-icon[alt="telegram"] {
+  padding: 10px;
+  background-color: #EDEDFA;
+} */
+
+.account-icon.connected[alt="pinterest"] {
+  padding: 8px;
+  background-color: #EDEDFA;
+}
+
+.account-icon:hover {
+  transform: scale(1.1);
+}
+
+.save-section {
+  padding: 5px 0 60px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.save-btn-bottom {
+  display: block;
+  width: 180px;
+  height: 50px;
+  background: #5856D2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.save-btn-bottom:hover {
+  background: #5D4EC7;
+}
+
+.save-btn-bottom:disabled {
+  background: #B2B2B2;
+  cursor: not-allowed;
+}
+
+.save-btn-bottom:disabled:hover {
+  background: #B2B2B2;
+}
+
+/* ========== АДАПТИВНЫЕ СТИЛИ ========== */
+
+/* Большие планшеты и маленькие десктопы (1400px и меньше) */
+@media (max-width: 1400px) {
+
+  .breadcrumb-container,
+  .edit-profile-container,
+  .auth-container,
+  .additional-container,
+  .save-section {
+    width: 95%;
+    max-width: 1400px;
+  }
+}
+
+/* Средние планшеты (1024px и меньше) */
+@media (max-width: 1024px) {
+
+  .edit-profile-container,
+  .auth-container,
+  .additional-container {
+    padding: 30px 25px;
+  }
+
+  .edit-title,
+  .auth-title,
+  .additional-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  /* Профиль - аватар и обложка */
+  .cover-block {
+    height: 160px;
+    margin-bottom: 50px;
+  }
+
+  .avatar-container {
+    left: 30px;
+    top: calc(100% - 75px);
+  }
+
+  .avatar-placeholder {
+    width: 150px;
+    height: 150px;
+    border: 6px solid #FFFFFF;
+  }
+
+  .avatar-placeholder img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .upload-instructions {
+    padding-left: 200px;
+    margin-bottom: 25px;
+  }
+
+  .upload-title {
+    font-size: 18px;
+  }
+
+  /* Формы */
+  .input-wrapper {
+    width: 400px;
+  }
+
+  .data-label,
+  .info-label,
+  .accounts-label {
+    width: 160px;
+  }
+}
+
+/* Малые планшеты (768px и меньше) */
+@media (max-width: 768px) {
+  .avatar-note {
+    font-size: 10px;
+  }
+
+  .breadcrumb-section {
+    padding: 15px 15px 5px 15px;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+  }
+
+  .edit-profile-container,
+  .auth-container,
+  .additional-container {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .edit-title,
+  .auth-title,
+  .additional-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Профиль - мобильная адаптация */
+  .cover-block {
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+  .cover-placeholder {
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Перемещаем аватар в мобильной версии */
+  .avatar-container {
+    position: static;
+    left: auto;
+    top: auto;
+    z-index: auto;
+    margin-top: 20px;
+  }
+
+  /* Grid контейнер */
+  .upload-instructions {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+
+  /* Размещаем аватар в гриде */
+  .avatar-container {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Адаптируем размеры аватара для мобильной версии */
+  .avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #FFFFFF;
+  }
+
+  .avatar-placeholder img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .avatar-placeholder.has-image .avatar-image {
+    width: 112px !important;
+    height: 112px !important;
+    object-fit: cover !important;
+  }
+
+  /* Уменьшаем кнопку удаления для мобильной версии */
+  .avatar-remove {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    top: -1px;
+    right: -1px;
+  }
+
+  .requirements {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: 13px;
+    text-align: left;
+    list-style-position: inside;
+    align-self: center;
+    line-height: 1.6;
+  }
+
+  .upload-title {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .char-counter {
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+  }
+
+  /* Формы - вертикальная раскладка */
+  .data-row,
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .accounts-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .accounts-row .error-message {
+    position: static;
+    left: auto;
+    margin-top: 4px;
+  }
+
+  .data-label,
+  .info-label,
+  .accounts-label {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+  }
+
+  .data-input,
+  .data-select {
+    height: 50px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
+  .error-message,
+  .field-error {
+    position: static;
+    margin-top: 4px;
+    white-space: normal;
+  }
+
+  /* Адаптивность соцсетей */
+  .accounts-icons {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .accounts-icons.error {
+    padding: 12px;
+  }
+
+  .account-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .save-section {
+    padding: 5px 15px 40px 15px;
+    width: 100%;
+  }
+
+  .save-btn-bottom {
+    width: 100%;
+    max-width: none;
+    height: 50px;
+    font-size: 15px;
+  }
+}
+
+/* Мобильные телефоны (480px и меньше) */
+@media (max-width: 480px) {
+  .avatar-note {
+    font-size: 8.5px;
+  }
+
+  .upload-instructions {
+    margin-top: 20px;
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+  }
+
+  /* Адаптируем размеры аватара */
+  .avatar-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .avatar-placeholder img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .avatar-placeholder.has-image .avatar-image {
+    width: 92px !important;
+    height: 92px !important;
+    object-fit: cover !important;
+  }
+
+  .avatar-remove {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+  }
+
+  .requirements {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .upload-title {
+    font-size: 15px;
+  }
+
+  /* Мобильная адаптация соцсетей */
+  .accounts-icons {
+    gap: 10px;
+  }
+
+  .accounts-icons.error {
+    padding: 10px;
+  }
+
+  .account-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .avatar-note {
+    font-size: 7px;
+    margin-top: 2px;
+  }
+
+  .upload-instructions {
+    margin-top: 20px;
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+  }
+
+  /* Адаптируем размеры аватара */
+  .avatar-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-placeholder img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .avatar-placeholder.has-image .avatar-image {
+    width: 72px !important;
+    height: 72px !important;
+    object-fit: cover !important;
+  }
+
+  .avatar-remove {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+  }
+
+  .requirements {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .upload-title {
+    font-size: 14px;
+  }
+
+  /* Супер мобильная адаптация соцсетей */
+  .accounts-icons {
+    gap: 8px;
+  }
+
+  .accounts-icons.error {
+    padding: 8px;
+  }
+
+  .account-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 15;
+}
+
+.remove-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.avatar-placeholder:hover .avatar-remove,
+.cover-placeholder:hover .cover-remove {
+  opacity: 1;
+}
+
+.avatar-remove {
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  z-index: 20;
+}
+
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding: 32px 50px;
+  height: 240px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #3F3F3F;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  right: -44px;
+  top: -24px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  background: #E0E0E0;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-input {
+  width: 100%;
+  height: 56px;
+  background: #F8F8FC;
+  border: none;
+  border-radius: 12px;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #3F3F3F;
+}
+
+.social-input::placeholder {
+  color: #B0B0B0;
+  font-size: 16px;
+}
+
+.social-input:focus {
+  outline: 2px solid #5856D2;
+  outline-offset: -2px;
+}
+
+/* Стили ошибок для модального окна */
+.social-input.error {
+  border: 2px solid #e74c3c;
+  background: #fdf2f2;
+}
+
+.save-btn {
+  width: 100%;
+  height: 56px;
+  background: #5856D2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #5D4EC7;
+}
+
+/* Адаптивность модалки */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95vw;
+    margin: 20px;
+    padding: 24px;
+  }
+
+  .modal-body .input-wrapper {
+    width: 100%;
+  }
+}
+
+.tips-toggle {
+  background: #5856D2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.3s ease;
+  display: none;
+  vertical-align: middle;
+}
+
+.tips-toggle:hover {
+  background: #5D4EC7;
+  transform: scale(1.1);
+}
+
+.tips-toggle.active {
+  background: #5D4EC7;
+}
+
+.upload-tips {
+  margin-top: 8px;
+}
+
+/* Показываем кнопку и скрываем desktop-tip ТОЛЬКО в мобильной версии */
+@media (max-width: 768px) {
+  .tips-toggle {
+    display: inline-block;
+  }
+
+  .desktop-tip {
+    display: none;
+  }
+
+  /* Центрируем заголовок когда tips НЕ показаны */
+  .requirements:not(.tips-expanded) {
+    display: flex;
+    align-items: center;
+    height: 120px;
+  }
+
+  .requirements:not(.tips-expanded) .upload-title {
+    margin: 0;
+  }
+
+  /* Когда tips показаны */
+  .requirements.tips-expanded {
+    display: block;
+    height: auto;
+  }
+
+  .requirements.tips-expanded .upload-title {
+    margin-bottom: 10px;
+  }
+}
+
+/* 480px - уменьшаем текст и центрируем по аватарке */
+@media (max-width: 480px) {
+  .requirements:not(.tips-expanded) {
+    height: 100px;
+  }
+
+  .requirements:not(.tips-expanded) .upload-title {
+    font-size: 14px;
+  }
+
+  .requirements.tips-expanded .upload-title {
+    font-size: 14px;
+  }
+
+  .tips-toggle {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}
+
+/* 360px - еще больше уменьшаем */
+@media (max-width: 360px) {
+  .requirements:not(.tips-expanded) {
+    height: 80px;
+  }
+
+  .requirements:not(.tips-expanded) .upload-title {
+    font-size: 13px;
+  }
+
+  .requirements.tips-expanded .upload-title {
+    font-size: 13px;
+  }
+
+  .tips-toggle {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+}
+
+/* В десктопе скрываем мобильные tips */
+@media (min-width: 769px) {
+  .upload-tips {
+    display: none;
+  }
+}
+
+.separator {
+  color: #ccc;
+  margin: 0 4px;
+}
+
+/* Планшеты (768px и меньше) */
+@media (max-width: 768px) {
+  .separator {
+    margin: 0 3px;
+  }
+}
+
+/* Мобильные (480px и меньше) */
+@media (max-width: 480px) {
+  .separator {
+    margin: 0 2px;
+    font-size: 12px;
+  }
+}
+
+/* Очень маленькие экраны (360px и меньше) */
+@media (max-width: 360px) {
+  .separator {
+    margin: 0 1px;
+    font-size: 10px;
+  }
+}
+
+/* Очень узкие экраны (320px и меньше) */
+@media (max-width: 320px) {
+  /* Группируем сепараторы */
+  .separator:nth-of-type(n+3) {
+    display: none;
+  }
+}
