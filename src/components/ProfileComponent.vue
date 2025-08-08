@@ -1,3 +1,5 @@
+<!-- src\components\ProfileComponent.vue -->
+
 <template>
   <section class="breadcrumb-section">
     <div class="breadcrumb-container">
@@ -361,15 +363,15 @@
   </section>
 
   <!-- Модальное окно для привязки соцсетей -->
-  <div v-if="showSocialModal" class="modal-overlay" @click="closeSocialModal">
-    <div class="modal-content" @click.stop>
-      <div class="modal-header">
+  <div v-if="showSocialModal" class="social-modal-overlay" @click="closeSocialModal">
+    <div class="social-modal-content" @click.stop>
+      <div class="social-modal-header">
         <h3>Привязать {{ getSocialTitle(currentSocial) }}</h3>
-        <button class="modal-close" @click="closeSocialModal">✕</button>
+        <button class="social-modal-close" @click="closeSocialModal">✕</button>
       </div>
 
-      <div class="modal-body">
-        <div class="input-wrapper">
+      <div class="socaial-modal-body">
+        <div class="socaial-input-wrapper">
           <input
             v-model="socialCredentials[currentSocial]"
             type="text"
@@ -386,7 +388,7 @@
 
         <div style="display: flex; gap: 10px">
           <button
-            class="modal-btn save-btn"
+            class="modal-btn social-save-btn"
             @click="saveSocialConnection"
             style="flex: 1"
           >

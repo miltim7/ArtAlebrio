@@ -1,3 +1,5 @@
+<!-- src\components\AboutSection.vue -->
+
 <template>
   <section class="about-section">
     <div class="about-content">

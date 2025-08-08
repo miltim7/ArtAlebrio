@@ -1,3 +1,5 @@
+<!-- src\components\ProductsTable.vue -->
+
 <template>
   <div class="container">
     <div class="tabs">
@@ -403,9 +405,9 @@
   </button>
 </div>
 
-    <div v-if="showPromoModal" class="modal-overlay" @click="closePromoModal">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
+    <div v-if="showPromoModal" class="promo-modal-overlay" @click="closePromoModal">
+      <div class="promo-modal-content" @click.stop>
+        <div class="promo-modal-header">
           <h3 class="modal-title">Получить больше просмотров</h3>
           <button class="modal-close" @click="closePromoModal">
             <img src="/images/x.png" alt="закрыть" class="close-icon" />

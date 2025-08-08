@@ -1,3 +1,5 @@
+<!-- src\views\ProductListing.vue -->
+
 <template>
   <Header  :isAuth="false"/>
 

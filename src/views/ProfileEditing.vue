@@ -1,3 +1,5 @@
+<!-- src\views\ProfileEditing.vue -->
+
 <template>
   <Header :isAuth="true" />
 

@@ -1,3 +1,5 @@
+/* src\assets\product-listing.css */
+
 .tabs {
     display: flex;
     background: #F8F8FC;
@@ -1756,7 +1758,7 @@ input:checked+.slider:before {
 
 
 /* Модальное окно */
-.modal-overlay {
+.promo-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -1770,7 +1772,7 @@ input:checked+.slider:before {
     padding: 20px;
 }
 
-.modal-content {
+.promo-modal-content {
     background: white;
     border-radius: 16px;
     width: 500px;
@@ -1784,7 +1786,7 @@ input:checked+.slider:before {
     max-height: 90vh;
 }
 
-.modal-header {
+.promo-modal-header {
     display: block;
     padding-bottom: 20px;
     flex-shrink: 0;
@@ -1974,11 +1976,11 @@ input:checked+.slider:before {
 
 /* Планшеты большие */
 @media (max-width: 768px) {
-    .modal-overlay {
+    .promo-modal-overlay {
         padding: 15px;
     }
 
-    .modal-content {
+    .promo-modal-content {
         width: 450px;
         height: 550px;
         padding: 18px 40px;
@@ -2014,11 +2016,11 @@ input:checked+.slider:before {
 }
 
 @media (max-width: 600px) {
-    .modal-overlay {
+    .promo-modal-overlay {
         padding: 10px;
     }
 
-    .modal-content {
+    .promo-modal-content {
         width: 400px;
         height: 485px;
         padding: 14px 25px;
@@ -2070,11 +2072,11 @@ input:checked+.slider:before {
 
 /* Мобильные большие */
 @media (max-width: 480px) {
-    .modal-overlay {
+    .promo-modal-overlay {
         padding: 10px;
     }
 
-    .modal-content {
+    .promo-modal-content {
         width: 350px;
         height: 450px;
         padding: 14px 25px;
@@ -2141,7 +2143,7 @@ input:checked+.slider:before {
 
 /* Мобильные маленькие */
 @media (max-width: 375px) {
-    .modal-content {
+    .promo-modal-content {
         width: 90%;
         padding: 10px 15px;
         height: 540px;

@@ -1,3 +1,5 @@
+// src\router\index.js
+
 import { createRouter, createWebHistory } from 'vue-router'
 import ProductListing from '../views/ProductListing.vue'
 import ProfileEditing from '../views/ProfileEditing.vue'

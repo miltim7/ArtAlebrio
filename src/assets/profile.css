@@ -1,5 +1,5 @@
 /* src/assets/profile.css */
-/* Хлебные крошки */
+
 .breadcrumb-section {
   padding: 20px 0 10px 0;
   display: flex;
@@ -317,7 +317,7 @@
   font-weight: 500;
 }
 
-.input-wrapper {
+.social-input-wrapper {
   position: relative;
   width: 477px;
 }
@@ -622,7 +622,7 @@
   }
 
   /* Формы */
-  .input-wrapper {
+  .social-input-wrapper {
     width: 400px;
   }
 
@@ -776,7 +776,7 @@
     font-size: 13px;
   }
 
-  .input-wrapper {
+  .social-input-wrapper {
     width: 100%;
   }
 
@@ -982,7 +982,7 @@
 }
 
 /* Модальное окно */
-.modal-overlay {
+.social-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -995,7 +995,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.social-modal-content {
   background: white;
   border-radius: 16px;
   width: 500px;
@@ -1006,7 +1006,7 @@
   height: 240px;
 }
 
-.modal-header {
+.social-modal-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1014,7 +1014,7 @@
   margin-bottom: 30px;
 }
 
-.modal-header h3 {
+.social-modal-header h3 {
   margin: 0;
   font-size: 24px;
   font-weight: 700;
@@ -1022,7 +1022,7 @@
   text-align: center;
 }
 
-.modal-close {
+.social-modal-close {
   position: absolute;
   right: -44px;
   top: -24px;
@@ -1040,11 +1040,11 @@
   border-radius: 50%;
 }
 
-.modal-close:hover {
+.social-modal-close:hover {
   background: #E0E0E0;
 }
 
-.modal-body {
+.social-modal-body {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -1077,7 +1077,7 @@
   background: #fdf2f2;
 }
 
-.save-btn {
+.social-save-btn {
   width: 100%;
   height: 56px;
   background: #5856D2;
@@ -1088,21 +1088,22 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-top: 15px;
 }
 
-.save-btn:hover {
+.social-save-btn:hover {
   background: #5D4EC7;
 }
 
 /* Адаптивность модалки */
 @media (max-width: 480px) {
-  .modal-content {
+  .social-modal-content {
     width: 95vw;
     margin: 20px;
     padding: 24px;
   }
 
-  .modal-body .input-wrapper {
+  .social-modal-body .social-input-wrapper {
     width: 100%;
   }
 }

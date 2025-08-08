@@ -1,3 +1,5 @@
+<!-- src\components\Header.vue -->
+
 <template>
   <!-- Header for authenticated users -->
   <header v-if="isAuth" class="header header--user">

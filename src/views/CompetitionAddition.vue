@@ -1,3 +1,5 @@
+<!-- src\views\CompetitionAddition.vue -->
+
 <template>
     <h1>Тест модального окна</h1>
     <button @click="openModal" style="padding: 10px 20px; margin: 20px;">Открыть модалку</button>
