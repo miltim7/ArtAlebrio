@@ -672,3 +672,250 @@
     padding: 16px 8px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Delivery Cost Calculator */
+.delivery-cost-calculator {
+  width: 732px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 30px;
+  border: 1px solid #E5E5E5;
+}
+
+.cost-calculator-header {
+  margin-bottom: 24px;
+}
+
+.cost-calculator-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3F3F3F;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.cost-calculator-description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9F9F9F;
+  margin: 0;
+  line-height: 1.5;}
+
+.cost-calculator-content {
+ display: flex;
+ flex-direction: column;
+ gap: 24px;
+}
+
+.delivery-type-select {
+ width: 100%;
+}
+
+.delivery-type-dropdown {
+ width: 100%;
+ height: 48px;
+ padding: 12px 16px;
+ background: #F8F8FC;
+ border: none;
+ border-radius: 8px;
+ font-size: 14px;
+ color: #1F2937;
+ appearance: none;
+ padding-right: 40px;
+ cursor: pointer;
+}
+
+.cost-breakdown {
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
+}
+
+.cost-row {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 0;
+}
+
+.cost-label {
+ font-size: 14px;
+ font-weight: 500;
+ color: #9F9F9F;
+ line-height: 1.4;
+}
+
+.cost-value {
+ font-size: 14px;
+ font-weight: 500;
+ color: #3F3F3F;
+ line-height: 1.4;
+}
+
+
+.profit-value {
+ color: #5856D2;
+ font-weight: 600;
+}
+
+/* Main Action Buttons */
+.delivery-main-buttons {
+ display: flex;
+ gap: 12px;
+ justify-content: flex-start;
+ margin-top: 24px;
+}
+
+.delivery-main-buttons button {
+ font-weight: 600;
+ font-size: 16px;
+  border: none;
+ padding: 15px 32px;
+ border-radius: 12px;
+ cursor: pointer;
+ transition: background 0.2s ease;
+}
+
+.delivery-main-btn-primary {
+ color: white;
+ background: #5856D2;
+}
+
+.delivery-main-btn-primary:hover {
+ background: #4845C4;
+}
+
+.delivery-main-btn-secondary {
+ color: #9F9F9F;
+ background: none;
+ font-weight: 400 !important;
+}
+
+.delivery-main-btn-secondary:hover {
+ background: #f5f5f5;
+}
+
+/* Responsive для калькулятора */
+@media (max-width: 768px) {
+ .delivery-cost-calculator {
+   width: 100%;
+   padding: 24px 16px;
+   margin-top: 30px;
+ }
+
+ .cost-calculator-title {
+   font-size: 16px;
+ }
+
+ .cost-calculator-description {
+   font-size: 13px;
+ }
+
+ .delivery-main-buttons {
+   flex-direction: column;
+   gap: 8px;
+   margin-top: 24px;
+ }
+
+ .delivery-main-btn-primary,
+ .delivery-main-btn-secondary {
+   width: 100%;
+   padding: 14px 20px;
+   font-size: 14px;
+ }
+}
+
+@media (max-width: 480px) {
+ .delivery-cost-calculator {
+   padding: 20px 12px;
+   margin-top: 24px;
+ }
+
+ .cost-calculator-title {
+   font-size: 15px;
+ }
+
+ .cost-calculator-description {
+   font-size: 12px;
+ }
+
+ .delivery-type-dropdown {
+   height: 44px;
+   padding: 12px 14px;
+   font-size: 13px;
+ }
+
+ .cost-label,
+ .cost-value {
+   font-size: 13px;
+ }
+
+ .delivery-main-btn-primary,
+ .delivery-main-btn-secondary {
+   padding: 12px 16px;
+   font-size: 13px;
+ }
+
+ .delivery-main-buttons {
+   margin-top: 20px;
+ }
+}
+
+@media (max-width: 320px) {
+ .delivery-cost-calculator {
+   padding: 16px 8px;
+   margin-top: 20px;
+ }
+
+ .cost-calculator-title {
+   font-size: 14px;
+ }
+
+ .delivery-type-dropdown {
+   height: 40px;
+   padding: 10px 12px;
+   font-size: 12px;
+ }
+
+ .cost-label,
+ .cost-value {
+   font-size: 12px;
+ }
+
+ .delivery-main-btn-primary,
+ .delivery-main-btn-secondary {
+   padding: 10px 14px;
+   font-size: 12px;
+ }
+
+ .delivery-main-buttons {
+   margin-top: 16px;
+ }
+}

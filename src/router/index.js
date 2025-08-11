@@ -9,6 +9,11 @@ import AddProductPage from '../views/AddProduct.vue'
 const routes = [
   {
     path: '/',
+    name: 'AddProductPage',
+    component: AddProductPage
+  },
+  {
+    path: '/product-listing',
     name: 'ProductListing',
     component: ProductListing
   },
@@ -21,11 +26,6 @@ const routes = [
     path: '/competition',
     name: 'CompetitionAddition',
     component: CompetitionAddition
-  },
-  {
-    path: '/add-product',
-    name: 'AddProductPage',
-    component: AddProductPage
   },
 ]
 
