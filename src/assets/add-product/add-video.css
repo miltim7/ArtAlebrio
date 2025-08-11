@@ -1,0 +1,168 @@
+/* src\assets\add-product\add-video.css */
+
+.add-video-container {
+  max-width: 1400px;
+  margin: 15px auto 0 auto;
+  padding: 40px 20px;
+  font-family: Onest, sans-serif;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.video-upload-section {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.video-preview-area {
+  width: 239px;
+  height: 215px;
+  background: #EDEDFA;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.play-icon svg {
+  width: 100px;
+  height: 100px;
+}
+
+.play-icon svg path {
+  fill: #9A9AAD;
+}
+
+.video-content {
+  flex: 1;
+}
+
+.upload-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.upload-description {
+  color: #9F9F9F;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.upload-description p {
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+max-width: 600px;
+}
+
+.upload-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Планшеты */
+@media (max-width: 768px) {
+  .add-video-container {
+    padding: 30px 15px;
+    margin: 10px auto 0 auto;
+  }
+
+  .video-upload-section {
+    gap: 24px;
+  }
+
+  .video-preview-area {
+    width: 200px;
+    height: 180px;
+  }
+
+  .play-icon svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .upload-title {
+    font-size: 18px;
+  }
+
+  .upload-description {
+    font-size: 13px;
+  }
+
+  .upload-description p {
+    max-width: 450px;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 480px) {
+  .add-video-container {
+    padding: 20px 12px;
+    margin: 8px auto 0 auto;
+    border-radius: 8px;
+  }
+
+  .video-upload-section {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .video-preview-area {
+    width: 200px;
+    height: 160px;
+  }
+
+  .play-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .video-content {
+    text-align: center;
+  }
+
+  .upload-title {
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .upload-description {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .upload-description p {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 320px) {
+  .add-video-container {
+    padding: 16px 8px;
+  }
+
+  .video-preview-area {
+    width: 140px;
+    height: 120px;
+  }
+
+  .play-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .upload-title {
+    font-size: 15px;
+  }
+
+  .upload-description {
+    font-size: 11px;
+  }
+}

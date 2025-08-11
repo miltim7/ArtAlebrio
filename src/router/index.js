@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ProductListing from '../views/ProductListing.vue'
 import ProfileEditing from '../views/ProfileEditing.vue'
 import CompetitionAddition from '../views/CompetitionAddition.vue'
+import AddProductPage from '../views/AddProduct.vue'
 
 const routes = [
   {
@@ -20,7 +21,12 @@ const routes = [
     path: '/competition',
     name: 'CompetitionAddition',
     component: CompetitionAddition
-  }
+  },
+  {
+    path: '/add-product',
+    name: 'AddProductPage',
+    component: AddProductPage
+  },
 ]
 
 const router = createRouter({

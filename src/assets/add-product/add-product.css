@@ -1,0 +1,968 @@
+/* src\assets\add-product\add-product.css */
+
+body {
+  background-color: #F8F8FC;
+}
+
+.add-product-container {
+  max-width: 1400px;
+  margin: 30px auto 0 auto;
+  padding: 40px 20px;
+  font-family: Onest, sans-serif;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 32px;
+}
+
+/* Main image area */
+.main-image-area {
+  flex: 0 0 435px;
+}
+
+.upload-zone {
+  width: 435px;
+  height: 435px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-zone:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.upload-zone.has-image {
+  border: none;
+  background: transparent;
+  position: relative;
+}
+
+.upload-zone.has-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 12px;
+  z-index: 5;
+}
+
+.upload-zone.has-image:hover::before {
+  opacity: 1;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #9A9AAD;
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+/* Main image delete button */
+.main-delete-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.upload-zone.has-image:hover .main-delete-btn {
+  opacity: 1;
+}
+
+/* Additional images */
+.additional-images {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.additional-image {
+  width: 86px;
+  height: 90px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.additional-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Image Preview Modal */
+.image-preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.image-preview-modal {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.preview-close-btn {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.preview-close-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.additional-image .remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.additional-image:hover .remove-btn {
+  opacity: 1;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 8px;
+}
+
+.additional-image:hover .image-overlay {
+  opacity: 1;
+}
+
+.corner-btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.corner-btn:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.delete-btn {
+  bottom: 0;
+  left: 0;
+}
+
+.copy-btn {
+  bottom: 4px;
+  right: 4px;
+}
+
+.crop-btn {
+  bottom: 0px;
+  right: 0px;
+}
+
+.crop-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Crop Modal */
+.crop-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.crop-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 500px; /* Фиксированная ширина */
+  height: 588px; /* Фиксированная высота */
+  overflow: hidden; /* Убираем скролл */
+  display: flex;
+  flex-direction: column;
+}
+
+.crop-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-shrink: 0; /* Не сжимается */
+  position: relative;
+}
+
+.crop-modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px !important;
+}
+
+.cut-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.crop-modal-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+}
+
+.crop-container {
+  flex: 1; /* Занимает оставшееся место */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.crop-image-wrapper {
+  position: relative;
+  width: 100%; /* На всю ширину контейнера */
+  height: 350px; /* Увеличенная высота для показа в полный рост */
+  margin: 0 auto 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+
+.crop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Показываем изображение полностью */
+  transition: transform 0.2s ease;
+}
+
+.crop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.crop-selection {
+  position: absolute;
+  background: transparent;
+  border: 2px solid white;
+  cursor: move;
+  pointer-events: all;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.crop-handle {
+  position: absolute;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  pointer-events: all;
+}
+
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+}
+
+.corner-tl { top: -6px; left: -6px; cursor: nw-resize; }
+.corner-tr { top: -6px; right: -6px; cursor: ne-resize; }
+.corner-bl { bottom: -6px; left: -6px; cursor: sw-resize; }
+.corner-br { bottom: -6px; right: -6px; cursor: se-resize; }
+
+.edge-t, .edge-b {
+  width: 12px;
+  height: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.edge-l, .edge-r {
+  width: 6px;
+  height: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.edge-t { top: -3px; }
+.edge-b { bottom: -3px; }
+.edge-l { left: -3px; }
+.edge-r { right: -3px; }
+
+.crop-move-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: move;
+}
+
+.crop-controls {
+  flex-shrink: 0;
+}
+
+.crop-angle-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #3F3F3F;
+  display: block;
+  margin-bottom: 12px;
+  text-align: left; /* Выравнивание по левому краю */
+}
+
+.angle-slider-container {
+  position: relative;
+  width: 100%; /* На всю ширину модалки */
+  margin: 0; /* Убираем центрирование */
+}
+
+.angle-slider {
+  width: 100%; /* На всю ширину контейнера */
+  height: 6px;
+  background: #E5E7EB;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.angle-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #6366F1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.angle-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #6366F1;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.crop-modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start; /* Выравнивание по левому краю */
+  flex-shrink: 0; /* Не сжимается */
+}
+
+.crop-btn-secondary {
+  font-family: Onest, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9F9F9F;
+  background: none;
+  border: none;
+  padding: 17px 35px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  order: 2; /* Кнопка "Отменить" будет второй */
+}
+
+.crop-btn-secondary:hover {
+  background: #f5f5f5;
+}
+
+.crop-btn-primary {
+  font-family: Onest, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: white;
+  background: #5856D2;
+  border: none;
+  padding: 17px 35px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  order: 1; /* Кнопка "Сохранить" будет первой */
+}
+
+.crop-btn-primary:hover {
+  background: #4845C4;
+}
+
+.image-actions {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.additional-image:hover .image-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  flex: 1;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.add-image-btn {
+  width: 86px;
+  height: 90px;
+  border-radius: 8px;
+  background: #EDEDFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.add-image-btn:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.plus-icon {
+  font-size: 50px;
+  color: #9A9AAD;
+  font-weight: 100;
+}
+
+/* Right content */
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: -100px; /* Сдвигаем блок левее */
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.tips-list,
+.advice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-list li,
+.advice-list li {
+  font-weight: 400;
+  font-size: 14px;
+  color: #9F9F9F;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.advice-list li:before {
+  content: "•";
+  color: #9F9F9F;
+  margin-right: 8px;
+}
+
+/* Checkbox */
+.checkbox-container {
+  margin-top: 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9F9F9F;
+  line-height: 1.5;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  margin-right: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.checkbox-input:checked + .checkbox-custom:after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-text {
+  flex: 1;
+}
+
+/* =============== АДАПТИВНОСТЬ =============== */
+
+/* Планшеты (768px - 1023px) */
+@media (max-width: 1023px) {
+  .add-product-container {
+    padding: 32px 16px;
+  }
+  
+  .content-wrapper {
+    gap: 40px;
+  }
+  
+  .main-image-area {
+    flex: 0 0 350px;
+  }
+  
+  .upload-zone {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+  
+  .right-content {
+    margin-left: -200px; /* Меньший сдвиг на планшетах */
+  }
+}
+
+@media (max-width: 800px) {
+  .right-content {
+    flex-direction: row;
+  }
+}
+
+/* При ширине 768px центрируем всё */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .main-image-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .right-content {
+    flex-direction: column;
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .section-title {
+    text-align: center;
+  }
+  
+  .tips-list,
+  .advice-list {
+    text-align: center;
+    display: inline-block;
+  }
+}
+
+/* Мобильные устройства (до 767px) */
+@media (max-width: 767px) {
+  .add-product-container {
+    padding: 24px 16px;
+  }
+  
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .main-image-area {
+    flex: none;
+    width: 100%;
+  }
+  
+  .upload-zone {
+    width: 100%;
+    height: 280px;
+    max-width: 400px;
+    margin: 0 auto 16px;
+  }
+  
+  .upload-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
+  /* Увеличиваем размер дополнительных изображений на мобильных */
+  .additional-images {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+  
+  .additional-image {
+    width: 86px;
+    height: 90px;
+  }
+  
+  .add-image-btn {
+    width: 86px;
+    height: 90px;
+  }
+  
+  /* Увеличиваем размер кнопок для удобства touch */
+  .corner-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .main-delete-btn {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Делаем кнопки всегда видимыми на мобильных */
+  .corner-btn {
+    opacity: 0.8;
+  }
+  
+  .main-delete-btn {
+    opacity: 0.8;
+  }
+  
+  .upload-zone.has-image::before {
+    opacity: 0.2;
+  }
+  
+  .right-content {
+    order: -1; /* Перемещаем правый блок наверх на мобильных */
+    margin-left: 0;
+  }
+  
+  .section {
+    margin-bottom: 24px;
+  }
+  
+  .section-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .tips-list li,
+  .advice-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  
+  .checkbox-label {
+    font-size: 13px;
+  }
+  
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Адаптивная модалка обрезки */
+  .crop-modal-overlay {
+    padding: 12px;
+  }
+  
+  .crop-modal {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .crop-modal-title {
+    font-size: 18px;
+  }
+  
+  .crop-image-wrapper {
+    height: 250px;
+    margin-bottom: 16px;
+  }
+  
+  .crop-modal-header {
+    margin-bottom: 16px;
+  }
+  
+  .crop-container {
+    margin-bottom: 16px;
+  }
+  
+  .crop-modal-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .crop-btn-primary,
+  .crop-btn-secondary {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+  
+  .close-btn {
+    top: -10px;
+    right: -10px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  /* Увеличиваем размеры элементов управления обрезкой на мобильных */
+  .corner-tl, .corner-tr, .corner-bl, .corner-br {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .corner-tl { top: -8px; left: -8px; }
+  .corner-tr { top: -8px; right: -8px; }
+  .corner-bl { bottom: -8px; left: -8px; }
+  .corner-br { bottom: -8px; right: -8px; }
+  
+  .edge-t, .edge-b {
+    width: 16px;
+    height: 8px;
+  }
+  
+  .edge-l, .edge-r {
+    width: 8px;
+    height: 16px;
+  }
+  
+  .edge-t { top: -4px; }
+  .edge-b { bottom: -4px; }
+  .edge-l { left: -4px; }
+  .edge-r { right: -4px; }
+}
+
+/* Очень маленькие экраны (до 480px) */
+@media (max-width: 480px) {
+  .add-product-container {
+    padding: 20px 12px;
+  }
+  
+  .upload-zone {
+    height: 240px;
+  }
+  
+  .additional-images {
+    gap: 8px;
+  }
+  
+  .additional-image,
+  .add-image-btn {
+    width: 86px;
+    height: 90px;
+  }
+  
+  .crop-modal {
+    padding: 16px;
+  }
+  
+  .crop-image-wrapper {
+    height: 200px;
+  }
+}
