@@ -16,86 +16,79 @@
     <div class="content-wrapper">
       <!-- Main image upload area -->
       <div class="main-image-area">
-        <div
-          class="upload-zone"
-          :class="{ 'has-image': mainImage }"
-          @click="triggerMainUpload"
-          @dragover.prevent
-          @drop.prevent="handleMainDrop"
-        >
-          <img v-if="mainImage" :src="mainImage" alt="Product image" class="main-image" />
-          <div v-else class="upload-placeholder">
-           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="6" y="14" width="36" height="26" rx="4" stroke="#9ca3af" stroke-width="2" fill="none"/>
-  <path d="M16 14L18 8H30L32 14" stroke="#9ca3af" stroke-width="2" fill="none"/>
-  <circle cx="24" cy="27" r="8" stroke="#9ca3af" stroke-width="2" fill="none"/>
-  <circle cx="24" cy="27" r="5" stroke="#9ca3af" stroke-width="1.5" fill="none"/>
-  <circle cx="36" cy="20" r="2" fill="#9ca3af"/>
-  <rect x="10" y="32" width="4" height="2" rx="1" fill="#9ca3af"/>
-</svg>
-          </div>
-
-          <!-- Кнопка удаления для основной картинки -->
-          <button
-            v-if="mainImage"
-            class="corner-btn delete-btn main-delete-btn"
-            @click.stop.prevent="removeMainImage"
-          >
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-              <path
-                d="M8 5V11M4 5V11M1 3V12C1 12.5523 1.44772 13 2 13H10C10.5523 13 11 12.5523 11 12V4M1 3H3M1 3H-1M3 3L4 1H8L9 3M3 3H9M9 3H11M11 3H13"
-                stroke="white"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Additional images -->
-        <div class="additional-images">
-          <div
-            v-for="(image, index) in additionalImages"
-            :key="index"
-            class="additional-image"
-          >
-            <img :src="image" alt="Additional image" />
-            <div class="image-actions">
-            
-            <button
-              class="corner-btn delete-btn"
-              @click.stop.prevent="removeAdditionalImage(index)"
-            >
-              <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-                <path
-                  d="M8 5V11M4 5V11M1 3V12C1 12.5523 1.44772 13 2 13H10C10.5523 13 11 12.5523 11 12V4M1 3H3M1 3H-1M3 3L4 1H8L9 3M3 3H9M9 3H11M11 3H13"
-                  stroke="white"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+        <!-- Главное изображение -->
+        <div class="main-image-section">
+          <div class="main-upload-zone" :class="{ 'has-image': mainImage }" @click="triggerMainUpload">
+            <div v-if="!mainImage" class="upload-placeholder">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="14" width="36" height="26" rx="4" stroke="#9ca3af" stroke-width="2" fill="none"/>
+                <path d="M16 14L18 8H30L32 14" stroke="#9ca3af" stroke-width="2" fill="none"/>
+                <circle cx="24" cy="27" r="8" stroke="#9ca3af" stroke-width="2" fill="none"/>
+                <circle cx="24" cy="27" r="5" stroke="#9ca3af" stroke-width="1.5" fill="none"/>
+                <circle cx="36" cy="20" r="2" fill="#9ca3af"/>
+                <rect x="10" y="32" width="4" height="2" rx="1" fill="#9ca3af"/>
               </svg>
-            </button>
-            <button
-              class="corner-btn crop-btn"
-              @click.stop.prevent="openCropModal(image, index)"
-            >
-              <img
-                src="/images/add-product/cut-icon2.png"
-                alt="Crop icon"/>
-            </button>
+              <span class="upload-text">Нажмите для загрузки</span>
+            </div>
+
+            <div v-if="mainImage" class="main-image-container">
+              <img :src="mainImage" alt="Main product image" class="main-image" />
+              
+              <!-- Кнопки для главного изображения -->
+              <div class="main-image-actions">
+                <button class="action-btn crop-btn" @click.stop="openCropModal(mainImage, 'main')">
+                  <span>Обрезать</span>
+                </button>
+                <button class="action-btn" @click.stop="removeMainImage">
+                  <span>Удалить</span>
+                </button>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Add more images buttons -->
-          <div
-            v-for="slot in emptySlots"
-            :key="`empty-${slot}`"
-            class="add-image-btn"
-            @click="triggerAdditionalUpload"
-          >
-            <span class="plus-icon">+</span>
+        <!-- Дополнительные изображения -->
+        <div class="additional-images-section">
+          <div class="additional-images">
+            <div
+              v-for="(image, index) in additionalImages"
+              :key="index"
+              class="additional-image"
+            >
+              <img :src="image" alt="Additional image" />
+              <div class="image-actions">
+                <button
+                  class="corner-btn delete-btn"
+                  @click.stop.prevent="removeAdditionalImage(index)"
+                >
+                  <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                    <path
+                      d="M8 5V11M4 5V11M1 3V12C1 12.5523 1.44772 13 2 13H10C10.5523 13 11 12.5523 11 12V4M1 3H3M1 3H-1M3 3L4 1H8L9 3M3 3H9M9 3H11M11 3H13"
+                      stroke="white"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="corner-btn crop-btn"
+                  @click.stop.prevent="openCropModal(image, index)"
+                >
+                  <img src="/images/add-product/cut-icon2.png" alt="Crop icon"/>
+                </button>
+              </div>
+            </div>
+
+            <!-- Add more images buttons -->
+            <div
+              v-for="slot in emptySlots"
+              :key="`empty-${slot}`"
+              class="add-image-btn"
+              @click="triggerAdditionalUpload"
+            >
+              <span class="plus-icon">+</span>
+            </div>
           </div>
         </div>
       </div>
@@ -226,11 +219,38 @@
               <input
                 type="range"
                 v-model="cropAngle"
-                min="-45"
-                max="45"
+                min="-90"
+                max="90"
                 step="1"
                 class="angle-slider"
+                list="angle-marks"
               />
+              <datalist id="angle-marks">
+                <option value="-90"></option>
+                <option value="-60"></option>
+                <option value="-45"></option>
+                <option value="-30"></option>
+                <option value="-15"></option>
+                <option value="0"></option>
+                <option value="15"></option>
+                <option value="30"></option>
+                <option value="45"></option>
+                <option value="60"></option>
+                <option value="90"></option>
+              </datalist>
+              <div class="angle-marks">
+                <span class="angle-mark" style="left: 0%">-90°</span>
+                <span class="angle-mark" style="left: 16.67%">-60°</span>
+                <span class="angle-mark" style="left: 25%">-45°</span>
+                <span class="angle-mark" style="left: 33.33%">-30°</span>
+                <span class="angle-mark" style="left: 41.67%">-15°</span>
+                <span class="angle-mark" style="left: 50%">0°</span>
+                <span class="angle-mark" style="left: 58.33%">15°</span>
+                <span class="angle-mark" style="left: 66.67%">30°</span>
+                <span class="angle-mark" style="left: 75%">45°</span>
+                <span class="angle-mark" style="left: 83.33%">60°</span>
+                <span class="angle-mark" style="left: 100%">90°</span>
+              </div>
             </div>
           </div>
         </div>
@@ -269,7 +289,7 @@ export default {
       mainImage: null,
       additionalImages: [],
       agreement: false,
-      maxAdditionalImages: 6,
+      maxAdditionalImages: 8,
       showCropModal: false,
       currentCropImage: null,
       currentCropIndex: null,
@@ -299,26 +319,21 @@ export default {
       };
     },
     cropContainerDimensions() {
-      // Динамически определяем размеры контейнера обрезки в зависимости от размера экрана
       const width = window.innerWidth;
-
       if (width <= 480) {
-        return { width: width - 64, height: 200 }; // Очень маленькие экраны
+        return { width: width - 64, height: 200 };
       } else if (width <= 767) {
-        return { width: width - 48, height: 250 }; // Мобильные
+        return { width: width - 48, height: 250 };
       } else {
-        return { width: 452, height: 350 }; // Десктоп
+        return { width: 452, height: 350 };
       }
     },
   },
   mounted() {
-    // Добавляем обработчик изменения размера окна
     window.addEventListener("resize", this.handleWindowResize);
   },
   beforeUnmount() {
-    // Удаляем обработчик при уничтожении компонента
     window.removeEventListener("resize", this.handleWindowResize);
-    // Очищаем event listeners если модальное окно открыто
     this.cleanupEventListeners();
   },
   methods: {
@@ -335,26 +350,19 @@ export default {
       if (file) {
         this.processMainImage(file);
       }
-      // Очищаем input для возможности повторного выбора того же файла
       event.target.value = "";
     },
 
     handleAdditionalFileSelect(event) {
       const files = Array.from(event.target.files);
-      files.forEach((file) => {
-        if (this.additionalImages.length < this.maxAdditionalImages) {
-          this.processAdditionalImage(file);
-        }
+      const remainingSlots = this.maxAdditionalImages - this.additionalImages.length;
+      const filesToProcess = files.slice(0, remainingSlots);
+      
+      filesToProcess.forEach((file) => {
+        this.processAdditionalImage(file);
       });
-      // Очищаем input для возможности повторного выбора тех же файлов
+      
       event.target.value = "";
-    },
-
-    handleMainDrop(event) {
-      const file = event.dataTransfer.files[0];
-      if (file && file.type.startsWith("image/")) {
-        this.processMainImage(file);
-      }
     },
 
     processMainImage(file) {
@@ -390,7 +398,6 @@ export default {
       this.showCropModal = true;
       this.cropAngle = 0;
 
-      // Ждем следующий тик, чтобы элемент модального окна был в DOM
       this.$nextTick(() => {
         this.updateCropSelection();
       });
@@ -418,13 +425,11 @@ export default {
 
     handleWindowResize() {
       if (this.showCropModal) {
-        // Пересчитываем размеры области обрезки при изменении размера окна
         this.updateCropSelection();
       }
     },
 
     getEventPos(event) {
-      // Универсальная функция для получения координат из mouse/touch событий
       if (event.touches && event.touches.length > 0) {
         return { x: event.touches[0].clientX, y: event.touches[0].clientY };
       }
@@ -520,7 +525,7 @@ export default {
       }
 
       const dimensions = this.cropContainerDimensions;
-      const minSize = window.innerWidth <= 767 ? 30 : 50; // Меньший минимальный размер на мобильных
+      const minSize = window.innerWidth <= 767 ? 30 : 50;
 
       if (
         selection.width >= minSize &&
@@ -563,54 +568,44 @@ export default {
       const img = new Image();
 
       img.onload = () => {
-        // Получаем реальные размеры изображения
         const originalWidth = img.naturalWidth;
         const originalHeight = img.naturalHeight;
 
-        // Получаем размеры контейнера
         const dimensions = this.cropContainerDimensions;
         const containerWidth = dimensions.width;
         const containerHeight = dimensions.height;
 
-        // Вычисляем как изображение отображается в контейнере (object-fit: contain)
         const containerAspect = containerWidth / containerHeight;
         const imageAspect = originalWidth / originalHeight;
 
         let displayWidth, displayHeight, offsetX, offsetY;
 
         if (imageAspect > containerAspect) {
-          // Изображение ограничено по ширине
           displayWidth = containerWidth;
           displayHeight = containerWidth / imageAspect;
           offsetX = 0;
           offsetY = (containerHeight - displayHeight) / 2;
         } else {
-          // Изображение ограничено по высоте
           displayHeight = containerHeight;
           displayWidth = containerHeight * imageAspect;
           offsetX = (containerWidth - displayWidth) / 2;
           offsetY = 0;
         }
 
-        // Вычисляем коэффициенты масштабирования
         const scaleX = originalWidth / displayWidth;
         const scaleY = originalHeight / displayHeight;
 
-        // Пересчитываем координаты обрезки относительно исходного изображения
         const cropX = (this.cropSelection.x - offsetX) * scaleX;
         const cropY = (this.cropSelection.y - offsetY) * scaleY;
         const cropWidth = this.cropSelection.width * scaleX;
         const cropHeight = this.cropSelection.height * scaleY;
 
-        // Убеждаемся, что координаты в пределах изображения
         const finalCropX = Math.max(0, Math.min(originalWidth - cropWidth, cropX));
         const finalCropY = Math.max(0, Math.min(originalHeight - cropHeight, cropY));
         const finalCropWidth = Math.min(cropWidth, originalWidth - finalCropX);
         const finalCropHeight = Math.min(cropHeight, originalHeight - finalCropY);
 
-        // Устанавливаем размеры canvas
         if (this.cropAngle !== 0) {
-          // При повороте нужно увеличить canvas, чтобы поместилось повернутое изображение
           const angle = Math.abs((this.cropAngle * Math.PI) / 180);
           const cos = Math.cos(angle);
           const sin = Math.sin(angle);
@@ -626,12 +621,9 @@ export default {
         }
 
         ctx.save();
-
-        // Центрируем и поворачиваем
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.rotate((this.cropAngle * Math.PI) / 180);
 
-        // Рисуем обрезанную часть изображения
         ctx.drawImage(
           img,
           finalCropX,
@@ -648,7 +640,9 @@ export default {
 
         const croppedImageData = canvas.toDataURL("image/jpeg", 0.9);
 
-        if (this.currentCropIndex !== null) {
+        if (this.currentCropIndex === 'main') {
+          this.mainImage = croppedImageData;
+        } else if (this.currentCropIndex !== null) {
           this.additionalImages.splice(this.currentCropIndex, 1, croppedImageData);
         }
 
