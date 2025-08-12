@@ -76,7 +76,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-/* Дополнительные стили для страницы если нужны */
-</style>

@@ -95,23 +95,69 @@
 
       <!-- Right side content -->
       <div class="right-content">
-        <div class="section">
-          <h3 class="section-title">Живопись</h3>
-          <ul class="tips-list">
-            <li>1. Максимальный формат - 2пг, в RGB цвете (не CMYK)</li>
-            <li>2. Разрешение не менее 1500px</li>
-            <li>3. в RGB цвете (не CMYK)</li>
-          </ul>
+        <!-- Кнопка для мобильных -->
+        <div class="mobile-tips-toggle" @click="toggleTips">
+          <div class="tips-button">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="tips-icon">
+              <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="#5856D2" stroke-width="1.5"/>
+              <path d="M10 14V10M10 7H10.01" stroke="#5856D2" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="tips-button-text">Советы по фото</span>
+            <svg 
+              width="12" 
+              height="12" 
+              viewBox="0 0 16 16" 
+              fill="none" 
+              class="tips-arrow"
+              :class="{ 'rotated': showTips }"
+            >
+              <path d="M4 6L8 10L12 6" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
 
-        <div class="section">
-          <h3 class="section-title">Советы:</h3>
-          <ul class="advice-list">
-            <li>Используйте до восьми фотографий</li>
-            <li>Используйте естественный свет и без вспышки</li>
-            <li>Старайтесь передать все цвета корректно, без пересветов и отражений</li>
-            <li>Показать продукт, который вы держите, нужно или используете</li>
-          </ul>
+        <!-- Контент советов для мобильных -->
+        <div class="tips-content" :class="{ 'expanded': showTips }">
+          <div class="section">
+            <h3 class="section-title">Живопись</h3>
+            <ul class="tips-list">
+              <li>1. Максимальный формат - 2пг, в RGB цвете (не CMYK)</li>
+              <li>2. Разрешение не менее 1500px</li>
+              <li>3. в RGB цвете (не CMYK)</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3 class="section-title">Советы:</h3>
+            <ul class="advice-list">
+              <li>Используйте до восьми фотографий</li>
+              <li>Используйте естественный свет и без вспышки</li>
+              <li>Старайтесь передать все цвета корректно, без пересветов и отражений</li>
+              <li>Показать продукт, который вы держите, нужно или используете</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Оригинальные секции для десктопа -->
+        <div class="desktop-tips">
+          <div class="section">
+            <h3 class="section-title">Живопись</h3>
+            <ul class="tips-list">
+              <li>1. Максимальный формат - 2пг, в RGB цвете (не CMYK)</li>
+              <li>2. Разрешение не менее 1500px</li>
+              <li>3. в RGB цвете (не CMYK)</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3 class="section-title">Советы:</h3>
+            <ul class="advice-list">
+              <li>Используйте до восьми фотографий</li>
+              <li>Используйте естественный свет и без вспышки</li>
+              <li>Старайтесь передать все цвета корректно, без пересветов и отражений</li>
+              <li>Показать продукт, который вы держите, нужно или используете</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -304,6 +350,7 @@ export default {
       isResizing: false,
       resizeHandle: null,
       lastMousePos: { x: 0, y: 0 },
+      showTips: false,
     };
   },
   computed: {
@@ -337,6 +384,10 @@ export default {
     this.cleanupEventListeners();
   },
   methods: {
+    toggleTips() {
+      this.showTips = !this.showTips;
+    },
+
     triggerMainUpload() {
       this.$refs.mainFileInput.click();
     },

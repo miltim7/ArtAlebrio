@@ -32,8 +32,6 @@ body {
   flex: 0 0 435px;
 }
 
-/* Upload section titles - REMOVED */
-
 /* Main image section */
 .main-image-section {
   margin-bottom: 32px;
@@ -266,6 +264,76 @@ body {
 .crop-btn img {
   width: 16px;
   height: 16px;
+}
+
+/* Mobile Tips Toggle - скрыто на десктопе */
+.mobile-tips-toggle {
+  display: none;
+}
+
+.tips-button {
+  width: 100%;
+  background: #F8F8FC;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.tips-button:hover {
+  background: #F0F0FF;
+  border-color: #5856D2;
+}
+
+.tips-button:active {
+  transform: scale(0.98);
+}
+
+.tips-button-text {
+  font-family: Onest, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #3F3F3F;
+  margin-left: 6px;
+  margin-right: 6px;
+  flex: 1;
+  text-align: left;
+}
+
+.tips-icon {
+  flex-shrink: 0;
+}
+
+.tips-arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.tips-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* Tips Content с анимацией - скрыто на десктопе */
+.tips-content {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+  padding: 0 20px;
+}
+
+.tips-content.expanded {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
 
 /* Crop Modal */
@@ -608,13 +676,11 @@ body {
   display: flex;
   gap: 4px;
   opacity: 0;
-  /* Возвращаем обратно - кнопки скрыты по умолчанию */
   transition: opacity 0.2s ease;
 }
 
 .additional-image:hover .image-actions {
   opacity: 1;
-  /* Показываем кнопки при наведении на всю фотографию */
 }
 
 .add-image-btn {
@@ -648,6 +714,11 @@ body {
   flex-direction: column;
   margin-top: 15px;
   margin-left: -300px;
+}
+
+/* Desktop tips - видно на десктопе */
+.desktop-tips {
+  display: block;
 }
 
 .section {
@@ -777,9 +848,27 @@ body {
   }
 }
 
-
 /* Мобильные устройства (до 767px) */
 @media (max-width: 767px) {
+
+  /* Показываем мобильные элементы */
+  .mobile-tips-toggle {
+    display: block;
+  }
+
+  .right-content {
+    margin-top: 0px;
+  }
+
+  .tips-content {
+    display: block;
+  }
+
+  /* Скрываем десктоп версию советов */
+  .desktop-tips {
+    display: none;
+  }
+
   .right-content {
     flex-direction: column;
     align-items: center;
@@ -818,6 +907,7 @@ body {
     flex-wrap: wrap;
     gap: 12px;
     padding-bottom: 8px;
+    overflow: visible;
   }
 
   .additional-image {
@@ -833,9 +923,6 @@ body {
   .corner-btn {
     width: 28px;
     height: 28px;
-  }
-
-  .corner-btn {
     opacity: 0.8;
   }
 
@@ -848,17 +935,17 @@ body {
     margin-left: 0;
   }
 
-  .section {
+  .tips-content .section {
     margin-bottom: 24px;
   }
 
-  .section-title {
+  .tips-content .section-title {
     font-size: 16px;
     margin-bottom: 12px;
   }
 
-  .tips-list li,
-  .advice-list li {
+  .tips-content .tips-list li,
+  .tips-content .advice-list li {
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 6px;
@@ -873,10 +960,35 @@ body {
     height: 20px;
     margin-right: 10px;
   }
+
+  /* Crop modal для мобильных */
+  .crop-modal {
+    width: calc(100vw - 32px);
+    max-width: 420px;
+    padding: 20px;
+  }
+
+  .crop-image-wrapper {
+    height: 280px;
+  }
+
+  .crop-modal-title {
+    font-size: 18px;
+  }
+
+  .crop-btn-primary,
+  .crop-btn-secondary {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
 }
 
 /* Очень маленькие экраны (до 480px) */
 @media (max-width: 480px) {
+  .right-content {
+    margin-bottom: -10px;
+  }
+
   .add-product-container {
     padding: 20px 12px;
   }
@@ -893,5 +1005,91 @@ body {
   .add-image-btn {
     width: 86px;
     height: 90px;
+  }
+
+  /* Уменьшенная crop modal для <480px */
+  .crop-modal {
+    width: calc(100vw - 24px);
+    max-width: 340px;
+    padding: 16px;
+    margin: 12px;
+  }
+
+  .crop-image-wrapper {
+    height: 220px;
+    margin-bottom: 16px;
+  }
+
+  .crop-modal-header {
+    margin-bottom: 16px;
+  }
+
+  .crop-modal-title {
+    font-size: 16px;
+  }
+
+  .cut-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .close-btn {
+    width: 28px;
+    height: 28px;
+    top: -16px;
+    right: -16px;
+  }
+
+  .crop-container {
+    margin-bottom: 16px;
+  }
+
+  .crop-angle-label {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .angle-slider-container {
+    padding-bottom: 16px;
+  }
+
+  .crop-btn-primary,
+  .crop-btn-secondary {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .crop-modal-footer {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  /* Уменьшенные crop handles для маленьких экранов */
+  .corner-tl,
+  .corner-tr,
+  .corner-bl,
+  .corner-br {
+    width: 14px;
+    height: 14px;
+  }
+
+  .corner-tl {
+    top: -7px;
+    left: -7px;
+  }
+
+  .corner-tr {
+    top: -7px;
+    right: -7px;
+  }
+
+  .corner-bl {
+    bottom: -7px;
+    left: -7px;
+  }
+
+  .corner-br {
+    bottom: -7px;
+    right: -7px;
   }
 }

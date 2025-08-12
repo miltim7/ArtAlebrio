@@ -327,8 +327,8 @@
   }
 
   .video-preview-area {
-    width: 200px;
-    height: 160px;
+    width: 160px;
+    height: 120px;
   }
 
   .play-icon svg {
@@ -457,5 +457,78 @@
   .remove-video-btn svg {
     width: 10px;
     height: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Premium Lock Styles */
+.premium-lock-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.premium-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.upgrade-to-premium-btn {
+  background: #5856D2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Onest, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  min-width: 120px;
+}
+
+.upgrade-to-premium-btn:hover {
+  background: #4C46C7;
+  transform: translateY(-1px);
+}
+
+.upgrade-to-premium-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .premium-lock-content {
+    text-align: center;
+  }
+  
+  .upgrade-to-premium-btn {
+    align-self: center;
+    width: 100%;
   }
 }

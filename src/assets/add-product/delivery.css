@@ -464,7 +464,7 @@
 }
 
 .delivery-cost-input {
-  width: 80px;
+  width: 100px;
   height: 36px;
   padding: 8px 12px;
   background: #FFFFFF;
@@ -472,6 +472,15 @@
   border-radius: 6px;
   font-size: 14px;
   color: #1F2937;
+
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.delivery-cost-input::-webkit-outer-spin-button,
+.delivery-cost-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .delivery-currency {
