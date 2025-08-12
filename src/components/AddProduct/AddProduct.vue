@@ -1,4 +1,5 @@
 <!-- src\components\AddProduct\AddProduct.vue -->
+
 <template>
   <section class="breadcrumb-section">
     <div class="breadcrumb-container">
@@ -18,25 +19,66 @@
       <div class="main-image-area">
         <!-- Главное изображение -->
         <div class="main-image-section">
-          <div class="main-upload-zone" :class="{ 'has-image': mainImage }" @click="triggerMainUpload">
+          <div
+            class="main-upload-zone"
+            :class="{ 'has-image': mainImage }"
+            @click="triggerMainUpload"
+          >
             <div v-if="!mainImage" class="upload-placeholder">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="14" width="36" height="26" rx="4" stroke="#9ca3af" stroke-width="2" fill="none"/>
-                <path d="M16 14L18 8H30L32 14" stroke="#9ca3af" stroke-width="2" fill="none"/>
-                <circle cx="24" cy="27" r="8" stroke="#9ca3af" stroke-width="2" fill="none"/>
-                <circle cx="24" cy="27" r="5" stroke="#9ca3af" stroke-width="1.5" fill="none"/>
-                <circle cx="36" cy="20" r="2" fill="#9ca3af"/>
-                <rect x="10" y="32" width="4" height="2" rx="1" fill="#9ca3af"/>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="6"
+                  y="14"
+                  width="36"
+                  height="26"
+                  rx="4"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <path
+                  d="M16 14L18 8H30L32 14"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <circle
+                  cx="24"
+                  cy="27"
+                  r="8"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  fill="none"
+                />
+                <circle
+                  cx="24"
+                  cy="27"
+                  r="5"
+                  stroke="#9ca3af"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+                <circle cx="36" cy="20" r="2" fill="#9ca3af" />
+                <rect x="10" y="32" width="4" height="2" rx="1" fill="#9ca3af" />
               </svg>
-              <span class="upload-text">Нажмите для загрузки</span>
+              <span class="upload-text">Загрузите главное фото</span>
             </div>
 
             <div v-if="mainImage" class="main-image-container">
               <img :src="mainImage" alt="Main product image" class="main-image" />
-              
+
               <!-- Кнопки для главного изображения -->
               <div class="main-image-actions">
-                <button class="action-btn crop-btn" @click.stop="openCropModal(mainImage, 'main')">
+                <button
+                  class="action-btn crop-btn"
+                  @click.stop="openCropModal(mainImage, 'main')"
+                >
                   <span>Обрезать</span>
                 </button>
                 <button class="action-btn" @click.stop="removeMainImage">
@@ -75,7 +117,7 @@
                   class="corner-btn crop-btn"
                   @click.stop.prevent="openCropModal(image, index)"
                 >
-                  <img src="/images/add-product/cut-icon2.png" alt="Crop icon"/>
+                  <img src="/images/add-product/cut-icon2.png" alt="Crop icon" />
                 </button>
               </div>
             </div>
@@ -99,29 +141,44 @@
         <div class="mobile-tips-toggle" @click="toggleTips">
           <div class="tips-button">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class="tips-icon">
-              <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="#5856D2" stroke-width="1.5"/>
-              <path d="M10 14V10M10 7H10.01" stroke="#5856D2" stroke-width="1.5" stroke-linecap="round"/>
+              <path
+                d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
+                stroke="#5856D2"
+                stroke-width="1.5"
+              />
+              <path
+                d="M10 14V10M10 7H10.01"
+                stroke="#5856D2"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
             </svg>
             <span class="tips-button-text">Советы по фото</span>
-            <svg 
-              width="12" 
-              height="12" 
-              viewBox="0 0 16 16" 
-              fill="none" 
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 16 16"
+              fill="none"
               class="tips-arrow"
-              :class="{ 'rotated': showTips }"
+              :class="{ rotated: showTips }"
             >
-              <path d="M4 6L8 10L12 6" stroke="#9F9F9F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M4 6L8 10L12 6"
+                stroke="#9F9F9F"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
         </div>
 
         <!-- Контент советов для мобильных -->
-        <div class="tips-content" :class="{ 'expanded': showTips }">
+        <div class="tips-content" :class="{ expanded: showTips }">
           <div class="section">
             <h3 class="section-title">Живопись</h3>
             <ul class="tips-list">
-              <li>1. Максимальный формат - 2пг, в RGB цвете (не CMYK)</li>
+              <li>1. Рекомендуемый формат: *.png; в RGB цвете (не CMYK)</li>
               <li>2. Разрешение не менее 1500px</li>
               <li>3. в RGB цвете (не CMYK)</li>
             </ul>
@@ -143,7 +200,7 @@
           <div class="section">
             <h3 class="section-title">Живопись</h3>
             <ul class="tips-list">
-              <li>1. Максимальный формат - 2пг, в RGB цвете (не CMYK)</li>
+              <li>1. Рекомендуемый формат: *.png; в RGB цвете (не CMYK)</li>
               <li>2. Разрешение не менее 1500px</li>
               <li>3. в RGB цвете (не CMYK)</li>
             </ul>
@@ -168,7 +225,7 @@
         <input type="checkbox" v-model="agreement" class="checkbox-input" />
         <span class="checkbox-custom"></span>
         <span class="checkbox-text">
-          Отмечу, если изображения содержит обнаженное тело, эротику, насилие или другое
+          Отметьте, если изображение содержит обнаженное тело, эротику, насилие или другое
           деликатное содержание (18+).
         </span>
       </label>
@@ -313,6 +370,7 @@
       ref="mainFileInput"
       type="file"
       accept="image/*"
+      capture="environment"
       style="display: none"
       @change="handleMainFileSelect"
     />
@@ -321,6 +379,7 @@
       type="file"
       accept="image/*"
       multiple
+      capture="environment"
       style="display: none"
       @change="handleAdditionalFileSelect"
     />
@@ -408,11 +467,11 @@ export default {
       const files = Array.from(event.target.files);
       const remainingSlots = this.maxAdditionalImages - this.additionalImages.length;
       const filesToProcess = files.slice(0, remainingSlots);
-      
+
       filesToProcess.forEach((file) => {
         this.processAdditionalImage(file);
       });
-      
+
       event.target.value = "";
     },
 
@@ -691,7 +750,7 @@ export default {
 
         const croppedImageData = canvas.toDataURL("image/jpeg", 0.9);
 
-        if (this.currentCropIndex === 'main') {
+        if (this.currentCropIndex === "main") {
           this.mainImage = croppedImageData;
         } else if (this.currentCropIndex !== null) {
           this.additionalImages.splice(this.currentCropIndex, 1, croppedImageData);

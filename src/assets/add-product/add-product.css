@@ -149,6 +149,7 @@ body {
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-bottom: 4px;
+  width: 100%;
 }
 
 .additional-image {
@@ -691,9 +692,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  position: relative;
+  pointer-events: auto !important;
 }
 
 .add-image-btn:hover {
@@ -705,6 +708,8 @@ body {
   font-size: 50px;
   color: #9A9AAD;
   font-weight: 100;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Right content */
@@ -930,6 +935,11 @@ body {
     opacity: 0.8;
   }
 
+  /* Задача 1: Инструменты всегда видны на мобилке */
+  .image-actions {
+    opacity: 1;
+  }
+
   .right-content {
     order: -1;
     margin-left: 0;
@@ -1005,6 +1015,11 @@ body {
   .add-image-btn {
     width: 86px;
     height: 90px;
+  }
+
+  /* Задача 1: Инструменты всегда видны на мобилке */
+  .image-actions {
+    opacity: 1;
   }
 
   /* Уменьшенная crop modal для <480px */
@@ -1091,5 +1106,26 @@ body {
   .corner-br {
     bottom: -7px;
     right: -7px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767px) {
+  .add-image-btn {
+    pointer-events: auto !important;
+    position: relative !important;
+  }
+  
+  .additional-images {
+    pointer-events: auto !important;
   }
 }

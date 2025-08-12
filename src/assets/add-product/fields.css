@@ -979,3 +979,99 @@
 .without-smiles {
   padding-right: 60px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Обновленные стили для editable-input */
+.editable-input {
+  min-height: 48px;
+  max-height: none;
+  height: auto;
+  padding: 12px 60px 12px 16px; /* Добавил правый отступ 60px */
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  outline: none;
+  cursor: text;
+}
+
+.editable-input:empty::before {
+  content: attr(data-placeholder);
+  color: #9CA3AF;
+  pointer-events: none;
+}
+
+.editable-input:focus {
+  outline: none;
+}
+
+.editable-input:focus-visible {
+  outline: none;
+}
+
+/* Обновляем стили для character-counter */
+.input-with-counter {
+  position: relative;
+}
+
+.input-with-counter .character-counter {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  top: auto;
+  transform: none;
+  font-size: 12px;
+  color: #9CA3AF;
+  pointer-events: none;
+  background: rgba(248, 248, 252, 0.9); /* Полупрозрачный фон */
+  padding: 2px 4px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* Responsive стили */
+@media (max-width: 768px) {
+  .editable-input {
+    padding: 14px 55px 14px 16px; /* Адаптивный правый отступ */
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editable-input {
+    padding: 12px 50px 12px 14px;
+    font-size: 14px;
+  }
+  
+  .input-with-counter .character-counter {
+    font-size: 11px;
+    right: 10px;
+    bottom: 10px;
+    padding: 1px 3px;
+  }
+}
+
+@media (max-width: 320px) {
+  .editable-input {
+    padding: 10px 45px 10px 12px;
+    font-size: 13px;
+  }
+  
+  .input-with-counter .character-counter {
+    right: 8px;
+    bottom: 8px;
+  }
+}

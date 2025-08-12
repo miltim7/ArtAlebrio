@@ -10,14 +10,15 @@
          поиска товара.
        </div>
        <div class="input-with-counter">
-         <input
-           type="text"
-           class="field-input without-smiles"
-           placeholder="(Без смайлов)"
-           v-model="localFormData.name"
-           @input="emitUpdate"
-           maxlength="140"
-         />
+         <div
+           ref="nameInput"
+           class="field-input without-smiles editable-input"
+           contenteditable="true"
+           :data-placeholder="localFormData.name ? '' : '(Без смайлов)'"
+           @input="handleNameInput"
+           @keydown="handleKeydown"
+           @paste="handlePaste"
+         ></div>
          <div class="character-counter">{{ localFormData.name.length }}/140</div>
        </div>
      </div>
@@ -288,7 +289,7 @@
          <label class="price-label">Внутренние</label>
          <div class="price-inputs">
            <div class="price-field-with-currency">
-             <label class="price-field-label">Ваша цена ₽</label>
+             <label class="price-field-label">Ваша цена</label>
              <div class="price-input-container">
                <input
                  type="number"
@@ -301,7 +302,7 @@
              </div>
            </div>
            <div class="price-field-with-currency">
-             <label class="price-field-label">Цена до скидки ₽</label>
+             <label class="price-field-label">Цена до скидки</label>
              <div class="price-input-container">
                <input
                  type="number"
@@ -336,7 +337,7 @@
          <label class="price-label">Где-либо еще</label>
          <div class="price-inputs">
            <div class="price-field-with-currency">
-             <label class="price-field-label">Ваша цена ₽</label>
+             <label class="price-field-label">Ваша цена</label>
              <div class="price-input-container">
                <input
                  type="number"
@@ -349,7 +350,7 @@
              </div>
            </div>
            <div class="price-field-with-currency">
-             <label class="price-field-label">Цена до скидки ₽</label>
+             <label class="price-field-label">Цена до скидки</label>
              <div class="price-input-container">
                <input
                  type="number"
@@ -486,6 +487,11 @@ export default {
        this.emitUpdate();
      }
    },
+   'formData.name'(newVal) {
+     if (newVal !== this.localFormData.name && this.$refs.nameInput) {
+       this.$refs.nameInput.textContent = newVal || '';
+     }
+   }
  },
 
  methods: {
@@ -542,6 +548,71 @@ export default {
        this.isColorsOpen = false;
      }
    },
+   
+   // НОВЫЕ МЕТОДЫ ДЛЯ CONTENTEDITABLE
+   handleNameInput(event) {
+     const text = event.target.textContent || '';
+     
+     // Ограничиваем длину текста
+     if (text.length > 140) {
+       const truncated = text.substring(0, 140);
+       event.target.textContent = truncated;
+       
+       // Устанавливаем курсор в конец
+       const range = document.createRange();
+       const selection = window.getSelection();
+       range.selectNodeContents(event.target);
+       range.collapse(false);
+       selection.removeAllRanges();
+       selection.addRange(range);
+       
+       this.localFormData.name = truncated;
+     } else {
+       this.localFormData.name = text;
+     }
+     
+     this.emitUpdate();
+   },
+
+   handleKeydown(event) {
+     // Запрещаем Enter - оставляем однострочность
+     if (event.key === 'Enter') {
+       event.preventDefault();
+     }
+     
+     // Проверяем лимит символов при вводе
+     const text = event.target.textContent || '';
+     if (text.length >= 140 && !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+       event.preventDefault();
+     }
+   },
+
+   handlePaste(event) {
+     event.preventDefault();
+     
+     // Получаем вставляемый текст
+     const paste = (event.clipboardData || window.clipboardData).getData('text');
+     const currentText = event.target.textContent || '';
+     
+     // Вычисляем сколько символов можно добавить
+     const remainingChars = 140 - currentText.length;
+     const textToInsert = paste.substring(0, remainingChars);
+     
+     // Вставляем текст в позицию курсора
+     const selection = window.getSelection();
+     if (selection.rangeCount > 0) {
+       const range = selection.getRangeAt(0);
+       range.deleteContents();
+       range.insertNode(document.createTextNode(textToInsert));
+       range.collapse(false);
+       selection.removeAllRanges();
+       selection.addRange(range);
+     }
+     
+     // Обновляем модель
+     this.localFormData.name = event.target.textContent;
+     this.emitUpdate();
+   },
  },
 
  mounted() {
@@ -556,6 +627,11 @@ export default {
        this.localFormData.otherRegularPrice = 0;
        this.localFormData.otherDiscountPrice = 0;
        this.emitUpdate();
+     }
+     
+     // Устанавливаем начальное значение для contenteditable
+     if (this.$refs.nameInput && this.localFormData.name) {
+       this.$refs.nameInput.textContent = this.localFormData.name;
      }
    });
  },
