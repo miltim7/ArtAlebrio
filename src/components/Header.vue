@@ -64,7 +64,6 @@
                 <div class="user__img">
                   <img src="/images/user-icon5.svg" alt="" />
                 </div>
-                <div class="user__name">{{ userData.name || 'Иван И' }}</div>
               </div>
               <div
                 class="user__hidden"
@@ -78,7 +77,10 @@
                     <div class="user__img">
                       <img src="/images/user-icon5.svg" alt="" />
                     </div>
-                    <div class="user__name">{{ userData.name || 'Иван И' }}</div>
+                    <div class="user__info">
+                      <div class="user__first-name">{{ firstName }}</div>
+                      <div class="user__last-name">{{ lastName }}</div>
+                    </div>
                   </div>
                 </div>
                 <div class="user__group">
@@ -90,7 +92,11 @@
                     <div class="user__tariff-title">действует до:</div>
                     <div class="user__tariff-text">{{ userTariff.expiryDate }}</div>
                   </div>
-                  <button class="user__btn btn" v-if="!userTariff.isPremium" @click="openPaymentModal">
+                  <button
+                    class="user__btn btn"
+                    v-if="!userTariff.isPremium"
+                    @click="openPaymentModal"
+                  >
                     <span>Оплатить магазин</span>
                   </button>
                 </div>
@@ -321,7 +327,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Search -->
                 <div class="header__search">
                   <input type="search" placeholder="Поиск" />
@@ -349,7 +355,7 @@
                     </svg>
                   </button>
                 </div>
-                
+
                 <!-- Mobile Search Button -->
                 <div
                   class="search-mob__btn"
@@ -451,7 +457,6 @@
                   <div class="user__img">
                     <img src="/images/user-icon5.svg" alt="" />
                   </div>
-                  <div class="user__name">{{ userData.name || 'Иван И' }}</div>
                 </div>
                 <div
                   class="user__hidden"
@@ -465,7 +470,10 @@
                       <div class="user__img">
                         <img src="/images/user-icon5.svg" alt="" />
                       </div>
-                      <div class="user__name">{{ userData.name || 'Иван И' }}</div>
+                      <div class="user__info">
+                        <div class="user__first-name">{{ firstName }}</div>
+                        <div class="user__last-name">{{ lastName }}</div>
+                      </div>
                     </div>
                   </div>
                   <div class="user__group">
@@ -477,7 +485,11 @@
                       <div class="user__tariff-title">действует до:</div>
                       <div class="user__tariff-text">{{ userTariff.expiryDate }}</div>
                     </div>
-                    <button class="user__btn btn" v-if="!userTariff.isPremium" @click="openPaymentModal">
+                    <button
+                      class="user__btn btn"
+                      v-if="!userTariff.isPremium"
+                      @click="openPaymentModal"
+                    >
                       <span>Оплатить магазин</span>
                     </button>
                   </div>
@@ -681,9 +693,11 @@
                         </a>
                         <a href="catalog.html" @click.stop>{{ item.title }}</a>
                       </div>
-                      <div 
-                        class="item-hidden" 
-                        :style="{ display: mobileCatalogItemsOpen[index] ? 'block' : 'none' }"
+                      <div
+                        class="item-hidden"
+                        :style="{
+                          display: mobileCatalogItemsOpen[index] ? 'block' : 'none',
+                        }"
                       >
                         <ul class="header__catalog-list">
                           <li><a href="">Пункт номер1</a></li>
@@ -697,7 +711,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="header__search">
               <input type="search" placeholder="Поиск" />
               <button class="header__search-btn">
@@ -918,11 +932,12 @@
                           :class="{ 'tab__content--active': activeTab === category.id }"
                         >
                           <div class="header__catalog-title">
-                            {{ category.title }}<span>{{ category.itemCount }} товаров</span>
+                            {{ category.title
+                            }}<span>{{ category.itemCount }} товаров</span>
                           </div>
                           <div class="header__catalog-items">
-                            <div 
-                              v-for="(item, itemIndex) in category.items" 
+                            <div
+                              v-for="(item, itemIndex) in category.items"
                               :key="itemIndex"
                               class="header__catalog-item"
                             >
@@ -930,7 +945,10 @@
                                 {{ item.subtitle }}
                               </a>
                               <ul class="header__catalog-list text-overflow">
-                                <li v-for="(subItem, subIndex) in item.list" :key="subIndex">
+                                <li
+                                  v-for="(subItem, subIndex) in item.list"
+                                  :key="subIndex"
+                                >
                                   <a href="">{{ subItem }}</a>
                                 </li>
                               </ul>
@@ -1148,12 +1166,15 @@
                         </a>
                         <a href="catalog.html" @click.stop>{{ category.title }}</a>
                       </div>
-                      <div 
-                        class="item-hidden" 
+                      <div
+                        class="item-hidden"
                         :style="{ display: category.isOpen ? 'block' : 'none' }"
                       >
                         <ul class="header__catalog-list">
-                          <li v-for="(subItem, subIndex) in category.subItems" :key="subIndex">
+                          <li
+                            v-for="(subItem, subIndex) in category.subItems"
+                            :key="subIndex"
+                          >
                             <a href="">{{ subItem }}</a>
                           </li>
                         </ul>
@@ -1163,7 +1184,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Duplicate Search (for mobile) -->
             <div class="header__search">
               <input type="search" placeholder="Поиск" />
@@ -1297,14 +1318,21 @@ export default {
       // Catalog item expansion state
       catalogItemsExpanded: {},
       mobileCatalogItemsOpen: {
-        0: false, 1: false, 2: false, 3: false, 4: false,
-        5: false, 6: false, 7: false, 8: false
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+        8: false,
       },
 
       // User data
       userData: {
-        name: 'Иван И',
-        avatar: '/images/user-icon5.svg'
+        name: "Иван И",
+        avatar: "/images/user-icon5.svg",
       },
 
       // User tariff data
@@ -1321,64 +1349,64 @@ export default {
           title: "Картины",
           icon: "/images/catalog-icon11.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 2,
           title: "Дом и стиль жизни",
           icon: "/images/catalog-icon12.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 3,
           title: "Рисунок, графика",
           icon: "/images/catalog-icon13.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 4,
           title: "Аксессуары",
           icon: "/images/catalog-icon14.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 5,
           title: "Сумки и кошельки",
           icon: "/images/catalog-icon15.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 6,
           title: "Украшения",
           icon: "/images/catalog-icon16.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 7,
           title: "Игрушки и игры",
           icon: "/images/catalog-icon17.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 8,
           title: "Материалы для творчества",
           icon: "/images/catalog-icon18.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
+          items: this.generateCatalogItems(),
         },
         {
           id: 9,
           title: "Коллекционирование",
           icon: "/images/catalog-icon19.svg",
           itemCount: 456,
-          items: this.generateCatalogItems()
-        }
+          items: this.generateCatalogItems(),
+        },
       ],
 
       // Catalog tabs data (for authenticated users)
@@ -1494,7 +1522,7 @@ export default {
             "Пункт название что то",
             "Какой то длинный пункт 2",
           ],
-        }
+        },
       ],
 
       // Mobile catalog items (for authenticated users)
@@ -1513,6 +1541,15 @@ export default {
   },
 
   computed: {
+    firstName() {
+      if (!this.userData.name) return "Иван";
+      return this.userData.name.split(" ")[0] || "Иван";
+    },
+    lastName() {
+      if (!this.userData.name) return "И";
+      const parts = this.userData.name.split(" ");
+      return parts[1] || "И";
+    },
     isAuth() {
       return this.isAuth || this.demoAuthMode;
     },
@@ -1535,10 +1572,12 @@ export default {
   methods: {
     // Generate catalog items helper method
     generateCatalogItems() {
-      return Array(6).fill(null).map(() => ({
-        subtitle: "Дом и стиль жизни",
-        list: Array(9).fill("Украшения")
-      }));
+      return Array(6)
+        .fill(null)
+        .map(() => ({
+          subtitle: "Дом и стиль жизни",
+          list: Array(9).fill("Украшения"),
+        }));
     },
 
     // Language select methods
@@ -1589,7 +1628,7 @@ export default {
       event.preventDefault();
       // Логика выхода
       console.log("User logout");
-      this.$emit('logout');
+      this.$emit("logout");
     },
 
     // Desktop catalog methods
@@ -1628,13 +1667,24 @@ export default {
     },
 
     toggleMobileCatalogItem(index) {
-      console.log('Toggling unauth mobile catalog item:', index, 'current state:', this.mobileCatalogCategories[index].isOpen);
-      this.mobileCatalogCategories[index].isOpen = !this.mobileCatalogCategories[index].isOpen;
+      console.log(
+        "Toggling unauth mobile catalog item:",
+        index,
+        "current state:",
+        this.mobileCatalogCategories[index].isOpen
+      );
+      this.mobileCatalogCategories[index].isOpen = !this.mobileCatalogCategories[index]
+        .isOpen;
     },
 
     // For authenticated user mobile catalog
     toggleMobileCatalogItemAuth(index) {
-      console.log('Toggling mobile catalog item:', index, 'current state:', this.mobileCatalogItemsOpen[index]);
+      console.log(
+        "Toggling mobile catalog item:",
+        index,
+        "current state:",
+        this.mobileCatalogItemsOpen[index]
+      );
       this.mobileCatalogItemsOpen[index] = !this.mobileCatalogItemsOpen[index];
     },
 

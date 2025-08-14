@@ -1676,3 +1676,21 @@
 	font-weight: 500;
 	color: #5856d2;
 }
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user__first-name, 
+.user__last-name {
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.user__last-name {
+  color: #9f9f9f;
+  font-weight: 400;
+}

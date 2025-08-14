@@ -6,10 +6,11 @@ body {
 
 .add-product-container {
   max-width: 1400px;
-  margin: 30px auto 0 auto;
-  padding: 40px 20px;
+  margin: 34px auto 0 auto;
+  padding: 40px;
   font-family: Onest, sans-serif;
-  border-radius: 12px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
   background-color: #fff;
 }
 
