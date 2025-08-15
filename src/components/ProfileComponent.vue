@@ -912,7 +912,11 @@ export default {
 };
 </script>
 
-<style src="../assets/profile.css"></style>
+<style scoped>
+@import "/src/assets/profile.css";
+@import "/src/assets/breadcrumb.css";
+</style>
+
 <style scoped>
 /* Черный цвет для выбранных значений в селектах */
 .data-select {

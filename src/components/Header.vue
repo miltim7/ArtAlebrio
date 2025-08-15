@@ -1757,6 +1757,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/header.css";
 </style>

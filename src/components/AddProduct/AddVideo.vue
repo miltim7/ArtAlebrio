@@ -326,6 +326,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/add-product/add-video.css";
 </style>

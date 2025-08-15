@@ -6,7 +6,7 @@
       <nav class="breadcrumb">
         <a href="#" class="breadcrumb-link">Главная</a>
         <span class="breadcrumb-separator">››</span>
-        <span class="breadcrumb-current">Редактирование профиля</span>
+        <span class="breadcrumb-current">Добавить товар</span>
       </nav>
     </div>
   </section>
@@ -765,6 +765,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/add-product/add-product.css";
+@import "/src/assets/breadcrumb.css";
 </style>

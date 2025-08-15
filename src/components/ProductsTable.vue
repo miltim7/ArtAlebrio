@@ -1,6 +1,18 @@
 <!-- src\components\ProductsTable.vue -->
 
 <template>
+  <section class="breadcrumb-section">
+    <div class="breadcrumb-container">
+      <nav class="breadcrumb">
+        <a href="#" class="breadcrumb-link">Главная</a>
+        <span class="breadcrumb-separator">››</span>
+        <a href="#" class="breadcrumb-link">Профиль</a>
+        <span class="breadcrumb-separator">››</span>
+        <span class="breadcrumb-current">Листинг товаров</span>
+      </nav>
+    </div>
+  </section>
+
   <div class="container">
     <div class="tabs">
       <button
@@ -259,151 +271,149 @@
     </div>
 
     <div class="pagination">
-  <button
-    class="pagination-btn pagination-arrow"
-    :disabled="currentPage === 1"
-    @click="prevPage"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M10 12L6 8L10 4"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
+      <button
+        class="pagination-btn pagination-arrow"
+        :disabled="currentPage === 1"
+        @click="prevPage"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 12L6 8L10 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
 
-  <template v-if="totalPages <= 7">
-    <button
-      v-for="page in totalPages"
-      :key="page"
-      class="pagination-btn pagination-number"
-      :class="{ active: currentPage === page }"
-      @click="setPage(page)"
-    >
-      {{ page }}
-    </button>
-  </template>
-  
-  <template v-else>
-    <!-- Always show first page -->
-    <button
-      class="pagination-btn pagination-number"
-      :class="{ active: currentPage === 1 }"
-      @click="setPage(1)"
-    >
-      1
-    </button>
-    
-    <!-- Show ellipsis or second page -->
-    <template v-if="currentPage > 3">
-      <button class="pagination-btn pagination-ellipsis" disabled>...</button>
-    </template>
-    <template v-else>
-      <button
-        class="pagination-btn pagination-number"
-        :class="{ active: currentPage === 2 }"
-        @click="setPage(2)"
-      >
-        2
-      </button>
-    </template>
-    
-    <!-- Dynamic middle pages -->
-    <template v-if="currentPage <= 3">
-      <button
-        class="pagination-btn pagination-number"
-        :class="{ active: currentPage === 3 }"
-        @click="setPage(3)"
-      >
-        3
-      </button>
-      <button class="pagination-btn pagination-ellipsis" disabled>...</button>
-    </template>
-    <template v-else-if="currentPage >= totalPages - 2">
-      <button class="pagination-btn pagination-ellipsis" disabled>...</button>
-      <button
-        class="pagination-btn pagination-number"
-        :class="{ active: currentPage === totalPages - 2 }"
-        @click="setPage(totalPages - 2)"
-      >
-        {{ totalPages - 2 }}
-      </button>
-    </template>
-    <template v-else>
-      <button
-        class="pagination-btn pagination-number"
-        @click="setPage(currentPage - 1)"
-      >
-        {{ currentPage - 1 }}
-      </button>
-      <button
-        class="pagination-btn pagination-number active"
-      >
-        {{ currentPage }}
-      </button>
-      <button
-        class="pagination-btn pagination-number"
-        @click="setPage(currentPage + 1)"
-      >
-        {{ currentPage + 1 }}
-      </button>
-    </template>
-    
-    <!-- Show ellipsis or second last page -->
-    <template v-if="currentPage < totalPages - 2">
-      <button class="pagination-btn pagination-ellipsis" disabled>...</button>
-    </template>
-    <template v-else>
-      <button
-        class="pagination-btn pagination-number"
-        :class="{ active: currentPage === totalPages - 1 }"
-        @click="setPage(totalPages - 1)"
-      >
-        {{ totalPages - 1 }}
-      </button>
-    </template>
-    
-    <!-- Always show last page -->
-    <button
-      class="pagination-btn pagination-number"
-      :class="{ active: currentPage === totalPages }"
-      @click="setPage(totalPages)"
-    >
-      {{ totalPages }}
-    </button>
-  </template>
+      <template v-if="totalPages <= 7">
+        <button
+          v-for="page in totalPages"
+          :key="page"
+          class="pagination-btn pagination-number"
+          :class="{ active: currentPage === page }"
+          @click="setPage(page)"
+        >
+          {{ page }}
+        </button>
+      </template>
 
-  <button
-    class="pagination-btn pagination-arrow"
-    :disabled="currentPage === totalPages"
-    @click="nextPage"
-  >
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M6 4L10 8L6 12"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
-</div>
+      <template v-else>
+        <!-- Always show first page -->
+        <button
+          class="pagination-btn pagination-number"
+          :class="{ active: currentPage === 1 }"
+          @click="setPage(1)"
+        >
+          1
+        </button>
+
+        <!-- Show ellipsis or second page -->
+        <template v-if="currentPage > 3">
+          <button class="pagination-btn pagination-ellipsis" disabled>...</button>
+        </template>
+        <template v-else>
+          <button
+            class="pagination-btn pagination-number"
+            :class="{ active: currentPage === 2 }"
+            @click="setPage(2)"
+          >
+            2
+          </button>
+        </template>
+
+        <!-- Dynamic middle pages -->
+        <template v-if="currentPage <= 3">
+          <button
+            class="pagination-btn pagination-number"
+            :class="{ active: currentPage === 3 }"
+            @click="setPage(3)"
+          >
+            3
+          </button>
+          <button class="pagination-btn pagination-ellipsis" disabled>...</button>
+        </template>
+        <template v-else-if="currentPage >= totalPages - 2">
+          <button class="pagination-btn pagination-ellipsis" disabled>...</button>
+          <button
+            class="pagination-btn pagination-number"
+            :class="{ active: currentPage === totalPages - 2 }"
+            @click="setPage(totalPages - 2)"
+          >
+            {{ totalPages - 2 }}
+          </button>
+        </template>
+        <template v-else>
+          <button
+            class="pagination-btn pagination-number"
+            @click="setPage(currentPage - 1)"
+          >
+            {{ currentPage - 1 }}
+          </button>
+          <button class="pagination-btn pagination-number active">
+            {{ currentPage }}
+          </button>
+          <button
+            class="pagination-btn pagination-number"
+            @click="setPage(currentPage + 1)"
+          >
+            {{ currentPage + 1 }}
+          </button>
+        </template>
+
+        <!-- Show ellipsis or second last page -->
+        <template v-if="currentPage < totalPages - 2">
+          <button class="pagination-btn pagination-ellipsis" disabled>...</button>
+        </template>
+        <template v-else>
+          <button
+            class="pagination-btn pagination-number"
+            :class="{ active: currentPage === totalPages - 1 }"
+            @click="setPage(totalPages - 1)"
+          >
+            {{ totalPages - 1 }}
+          </button>
+        </template>
+
+        <!-- Always show last page -->
+        <button
+          class="pagination-btn pagination-number"
+          :class="{ active: currentPage === totalPages }"
+          @click="setPage(totalPages)"
+        >
+          {{ totalPages }}
+        </button>
+      </template>
+
+      <button
+        class="pagination-btn pagination-arrow"
+        :disabled="currentPage === totalPages"
+        @click="nextPage"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 4L10 8L6 12"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
 
     <div v-if="showPromoModal" class="promo-modal-overlay" @click="closePromoModal">
       <div class="promo-modal-content" @click.stop>
@@ -837,6 +847,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/product-listing.css";
+@import "/src/assets/breadcrumb.css";
 </style>

@@ -301,6 +301,11 @@
   font-weight: 600;
 }
 
+.info-label {
+  width: 100%;
+  word-wrap: none;
+}
+
 .counter-label,
 .counter-dash,
 .counter-value {

@@ -1030,7 +1030,7 @@ methods: {
 }
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/add-product/delivery.css";
 
 /* Дополнительные стили для общей стоимости */

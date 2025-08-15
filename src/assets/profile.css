@@ -1,47 +1,5 @@
 /* src/assets/profile.css */
 
-.breadcrumb-section {
-  padding: 20px 0 10px 0;
-  display: flex;
-  justify-content: center;
-}
-
-.breadcrumb-container {
-  width: 1400px;
-  margin: 0 auto;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #9F9F9F;
-  margin: 0;
-}
-
-.breadcrumb-link {
-  color: #B2B2B2;
-  font-size: 14px;
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-
-.breadcrumb-link:hover {
-  color: #5856D2;
-}
-
-.breadcrumb-separator {
-  color: #D0D0D0;
-  font-size: 12px;
-}
-
-.breadcrumb-current {
-  color: #3F3F3F;
-  font-weight: 400;
-  font-size: 14px;
-}
-
 .edit-profile-section {
   padding: 30px 0 5px 0;
   display: flex;
@@ -313,7 +271,7 @@
 .data-label {
   width: 180px;
   color: #3F3F3F;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -398,6 +356,11 @@
   transition: all 0.2s ease;
 }
 
+.input-wrapper {
+  max-width: 477px;
+  width: 100%;
+}
+
 .data-select:focus {
   outline: 2px solid #5856D2;
   outline-offset: -2px;
@@ -452,7 +415,7 @@
 .info-label {
   width: 180px;
   color: #3F3F3F;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -473,7 +436,7 @@
 .accounts-label {
   width: 180px;
   color: #3F3F3F;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -564,7 +527,6 @@
 /* Большие планшеты и маленькие десктопы (1400px и меньше) */
 @media (max-width: 1400px) {
 
-  .breadcrumb-container,
   .edit-profile-container,
   .auth-container,
   .additional-container,
@@ -637,14 +599,6 @@
 @media (max-width: 768px) {
   .avatar-note {
     font-size: 10px;
-  }
-
-  .breadcrumb-section {
-    padding: 15px 15px 5px 15px;
-  }
-
-  .breadcrumb {
-    font-size: 13px;
   }
 
   .edit-profile-container,

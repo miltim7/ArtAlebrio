@@ -5,12 +5,13 @@ import ProductListing from '../views/ProductListing.vue'
 import ProfileEditing from '../views/ProfileEditing.vue'
 import CompetitionAddition from '../views/CompetitionAddition.vue'
 import AddProductPage from '../views/AddProduct.vue'
+import Profile from '../views/ProfileView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'AddProductPage',
-    component: AddProductPage
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/product-listing',
@@ -18,7 +19,7 @@ const routes = [
     component: ProductListing
   },
   {
-    path: '/profile',
+    path: '/profile-editing',
     name: 'ProfileEditing',
     component: ProfileEditing
   },
@@ -26,6 +27,11 @@ const routes = [
     path: '/competition',
     name: 'CompetitionAddition',
     component: CompetitionAddition
+  },
+  {
+    path: '/add-product',
+    name: 'AddProductPage',
+    component: AddProductPage
   },
 ]
 

@@ -642,6 +642,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "/src/assets/add-product/fields.css";
 </style>
