@@ -330,6 +330,21 @@ body {
   font-weight: 500;
   color: #3F3F3F;
   margin: 0 0 20px 0;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.clickable-title {
+  cursor: pointer;
+  user-select: none;
+}
+
+.clickable-title:hover {
+  color: #5856D2;
+}
+
+.shop-title.active {
+  font-weight: 600;
+  color: #5856D2;
 }
 
 .shop-category {
@@ -623,17 +638,25 @@ body {
     padding: 16px 22px;
     border-radius: 12px;
     border: 1px solid transparent;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
   }
 
-  .shop-tab:first-child {
-    cursor: default;
+  .shop-tab.active {
+    border: 1px solid #5856D2;
+    background-color: #F8F8FC;
   }
 
-  .shop-tab:first-child .shop-title {
+  .shop-tab .shop-title {
     margin: 0;
     font-size: 16px;
     font-weight: 500;
     color: #3F3F3F;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+  }
+
+  .shop-tab .shop-title.active {
+    font-weight: 600;
+    color: #5856D2;
   }
 
   .shop-category-mobile {

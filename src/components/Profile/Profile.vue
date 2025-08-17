@@ -220,6 +220,7 @@
 
     <div class="shop-header-mobile">
       <ShopHeader
+        v-if="activeSection === 'goods' || ['abstraction', 'pasta', 'hats'].includes(activeSection)"
         :totalProducts="totalProducts"
         @sort-change="handleSortChange"
         @per-page-change="handlePerPageChange"
@@ -340,8 +341,15 @@
           <div class="shop-section">
             <div class="shop-tabs-container">
               <div class="shop-tabs">
-                <div class="shop-tab">
-                  <span class="shop-title">О магазине</span>
+                <div 
+                  class="shop-tab"
+                  :class="{ active: activeSection === 'about' }"
+                  @click="setActiveSection('about')"
+                >
+                  <span 
+                    class="shop-title"
+                    :class="{ active: activeSection === 'about' }"
+                  >О магазине</span>
                 </div>
 
                 <div
@@ -475,7 +483,11 @@
             </div>
 
             <div class="shop-content-desktop">
-              <h3 class="shop-title">О магазине</h3>
+              <h3 
+                class="shop-title clickable-title"
+                :class="{ active: activeSection === 'about' }"
+                @click="setActiveSection('about')"
+              >О магазине</h3>
 
               <div class="shop-category" @click="toggleGoods">
                 <div class="category-info">
@@ -599,9 +611,9 @@
         </div>
       </div>
 
-      <!-- В Profile.vue заменить в template -->
       <div class="profile-right">
         <ShopHeader
+          v-if="activeSection === 'goods' || ['abstraction', 'pasta', 'hats'].includes(activeSection)"
           :totalProducts="filteredProducts.length"
           @sort-change="handleSortChange"
           @per-page-change="handlePerPageChange"
@@ -610,7 +622,7 @@
           @search-change="handleSearchChange"
         />
 
-        <ProductGrid
+        <component :is="currentComponent" 
           :products="filteredProducts"
           :items-per-page="currentPageSize"
           @toggle-favorite="handleToggleFavorite"
@@ -625,12 +637,28 @@
 <script>
 import ShopHeader from "./ShopHeader.vue";
 import ProductGrid from "./ProductGrid.vue";
+import AboutShopContent from "./content/AboutShopContent.vue";
+import ReviewsContent from "./content/ReviewsContent.vue";
+import PaymentContent from "./content/PaymentContent.vue";
+import CustomOrderContent from "./content/CustomOrderContent.vue";
+import AwardsContent from "./content/AwardsContent.vue";
+import BlogContent from "./content/BlogContent.vue";
+import ExhibitionsContent from "./content/ExhibitionsContent.vue";
+import EventsContent from "./content/EventsContent.vue";
 
 export default {
   name: "Profile",
   components: {
     ShopHeader,
     ProductGrid,
+    AboutShopContent,
+    ReviewsContent,
+    PaymentContent,
+    CustomOrderContent,
+    AwardsContent,
+    BlogContent,
+    ExhibitionsContent,
+    EventsContent,
   },
   props: {
     authorName: {
@@ -727,6 +755,23 @@ export default {
     },
     currentPageSize() {
       return parseInt(this.shopFilters.perPage);
+    },
+    currentComponent() {
+      const componentMap = {
+        about: "AboutShopContent",
+        goods: "ProductGrid",
+        abstraction: "ProductGrid",
+        pasta: "ProductGrid",
+        hats: "ProductGrid",
+        reviews: "ReviewsContent",
+        payment: "PaymentContent",
+        custom: "CustomOrderContent",
+        awards: "AwardsContent",
+        blog: "BlogContent",
+        exhibitions: "ExhibitionsContent",
+        events: "EventsContent",
+      };
+      return componentMap[this.activeSection] || "AboutShopContent";
     },
   },
   methods: {
