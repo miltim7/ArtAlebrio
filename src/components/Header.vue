@@ -62,7 +62,8 @@
             <div class="user">
               <div class="user__show" @click="toggleUserDropdown">
                 <div class="user__img">
-                  <img src="/images/user-icon5.svg" alt="" />
+                  <!-- <img src="/images/user-icon5.svg" alt="" /> -->
+                  <img src="/images/laravel.png" alt="" />
                 </div>
               </div>
               <div
@@ -75,7 +76,8 @@
                   </div>
                   <div class="user__subgroup">
                     <div class="user__img">
-                      <img src="/images/user-icon5.svg" alt="" />
+                      <!-- <img src="/images/user-icon5.svg" alt="" /> -->
+                      <img src="/images/laravel.png" alt="" />
                     </div>
                     <div class="user__info">
                       <div class="user__first-name">{{ firstName }}</div>
@@ -455,7 +457,8 @@
               <div class="user">
                 <div class="user__show" @click="toggleUserDropdown">
                   <div class="user__img">
-                    <img src="/images/user-icon5.svg" alt="" />
+                    <!-- <img src="/images/user-icon5.svg" alt="" /> -->
+                    <img src="/images/laravel.png" alt="" />
                   </div>
                 </div>
                 <div
@@ -468,7 +471,8 @@
                     </div>
                     <div class="user__subgroup">
                       <div class="user__img">
-                        <img src="/images/user-icon5.svg" alt="" />
+                        <!-- <img src="/images/user-icon5.svg" alt="" /> -->
+                        <img src="/images/laravel.png" alt="" />
                       </div>
                       <div class="user__info">
                         <div class="user__first-name">{{ firstName }}</div>
@@ -796,7 +800,8 @@
         </a>
         <a href="profile.html" class="header-mob__item">
           <span class="header-mob__item-icon">
-            <img src="/images/user-icon.svg" alt="" />
+            <!-- <img src="/images/user-icon.svg" alt="" /> -->
+            <img src="/images/laravel.png" alt="" />
           </span>
           <span class="header-mob__item-text">Профиль</span>
         </a>
@@ -1272,7 +1277,8 @@
         </a>
         <a href="profile.html" class="header-mob__item">
           <span class="header-mob__item-icon">
-            <img src="/images/user-icon.svg" alt="" />
+            <!-- <img src="/images/user-icon.svg" alt="" /> -->
+            <img src="/images/laravel.png" alt="" />
           </span>
           <span class="header-mob__item-text">Профиль</span>
         </a>
@@ -1332,7 +1338,8 @@ export default {
       // User data
       userData: {
         name: "Иван И",
-        avatar: "/images/user-icon5.svg",
+        // avatar: "/images/user-icon5.svg",
+        avatar: "/images/laravel.png",
       },
 
       // User tariff data
