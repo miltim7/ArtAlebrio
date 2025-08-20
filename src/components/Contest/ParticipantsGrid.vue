@@ -212,23 +212,12 @@ export default {
 
 @media (max-width: 480px) {
   .participants-grid {
-    columns: 1;
-    column-gap: 0;
+    columns: 2;
+    column-gap: 12px;
   }
   
   .participants-grid > * {
-    margin-bottom: 16px;
-  }
-}
-
-@media (max-width: 360px) {
-  .participants-grid {
-    columns: 1;
-    column-gap: 16px;
-  }
-  
-  .participants-grid > * {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 }
 </style>

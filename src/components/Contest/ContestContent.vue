@@ -3,11 +3,12 @@
 <template>
   <div class="content">
     <div class="content-body">
-      <h2 class="section-title" v-if="activeTab !== 'participants'">
+      <h2 class="section-title" v-if="activeTab !== 'participants' && activeTab !== 'winners'">
         До окончания осталось:
       </h2>
 
       <ParticipantsGrid v-if="activeTab === 'participants'" />
+      <WinnersGrid v-else-if="activeTab === 'winners'" />
 
       <div class="content-text" v-else-if="activeTab === 'description'">
         <p>
@@ -41,16 +42,18 @@
 
 <script>
 import ParticipantsGrid from "./ParticipantsGrid.vue";
+import WinnersGrid from "./WinnersGrid.vue";
 
 export default {
   name: "ContestContent",
   components: {
     ParticipantsGrid,
+    WinnersGrid,
   },
   props: {
     activeTab: {
       type: String,
-      default: "description",
+      default: "participants",
     },
   },
 };

@@ -475,7 +475,7 @@ export default {
           }</span>
         </div>
         <div class="counter-item">
-          <span class="counter-label">Вы должны внести</span>
+          <span class="counter-label">К оплате</span>
           <span class="counter-dash"> - </span>
           <span class="counter-value" id="totalAmount">${this.calculateTotal()}</span>
         </div>

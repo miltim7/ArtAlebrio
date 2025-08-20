@@ -17,6 +17,14 @@
       </button>
 
       <button 
+        class="participants-btn"
+        :class="{ active: activeTab === 'winners' }"
+        @click="$emit('tab-changed', 'winners')"
+      >
+        <span class="participants-text">Победители (12)</span>
+      </button>
+
+      <button 
         class="nav-item" 
         :class="{ active: activeTab === 'description' }"
         @click="$emit('tab-changed', 'description')"
@@ -40,14 +48,19 @@
         Жюри
       </button>
 
-      <button class="participate-btn" @click="$emit('open-modal')">
+      <button class="participate-btn" @click="$emit('open-modal')" v-if="!contestEnded">
         <img src="/images/contest/plus.png" alt="" class="btn-icon">
         Принять участие
+      </button>
+
+      <button class="vote-btn" v-else>
+        Голосовать
       </button>
     </div>
 
     <select class="mobile-select" v-model="selectedOption" @change="handleSelectChange">
       <option value="participants">Участники (567)</option>
+      <option value="winners">Победители (12)</option>
       <option value="description">Описание</option>
       <option value="awards">Награда</option>
       <option value="jury">Жюри</option>
@@ -62,6 +75,10 @@ export default {
     activeTab: {
       type: String,
       default: 'participants'
+    },
+    contestEnded: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['tab-changed', 'open-modal'],
@@ -176,12 +193,32 @@ export default {
   justify-content: center;
   gap: 8px;
   transition: background-color 0.2s;
-  font-size: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .participate-btn:hover {
   background: #5856eb;
+}
+
+.vote-btn {
+  background: #28A745;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vote-btn:hover {
+  background: #218838;
 }
 
 .btn-icon {
@@ -201,7 +238,8 @@ export default {
     width: 100%;
   }
   
-  .participate-btn {
+  .participate-btn,
+  .vote-btn {
     display: none;
   }
   

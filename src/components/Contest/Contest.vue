@@ -48,17 +48,18 @@
   </div>
 
     <div class="contest-main">
-      <div class="breadcrumb-container">
-        <div class="contest-container">
-          <ContestSidebar
-            @tab-changed="handleTabChange"
-            @open-modal="openModal"
-            :active-tab="activeTab"
-          />
-          <ContestContent :active-tab="activeTab" />
-        </div>
+    <div class="breadcrumb-container">
+      <div class="contest-container">
+        <ContestSidebar 
+          @tab-changed="handleTabChange" 
+          @open-modal="openModal" 
+          :active-tab="activeTab"
+          :contest-ended="contestEnded"
+        />
+        <ContestContent :active-tab="activeTab" />
       </div>
     </div>
+  </div>
 
   <Modal ref="modal" />
 </template>

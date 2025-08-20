@@ -326,6 +326,18 @@
   color: var(--text-primary);
 }
 
+.counter-item:last-child .counter-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.counter-item:last-child .counter-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
 .art-modal__preorder {
   margin: 20px 0 var(--spacing-lg) 0;
 }

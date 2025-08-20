@@ -10,7 +10,7 @@
         </button>
         <button class="action-btn like-btn" @click="toggleLike">
           <img 
-            :src="isLiked ? '/images/contest/heart-active.png' : '/images/contest/heart.png'" 
+            :src="isLiked ? '/images/contest/like-active.png' : '/images/contest/like.png'" 
             alt="" 
             class="action-icon"
           >
@@ -36,7 +36,7 @@
         </div>
       </div>
       
-      <div v-else-if="showStars" class="rating-container">
+      <div v-else-if="showStars && !isMobile" class="rating-container">
         <div class="stars-rating">
           <button 
             v-for="star in 10" 
@@ -68,16 +68,26 @@
       :author="participant.author"
       @close="closeLightbox"
     />
+
+    <MobileRatingModal
+      :is-open="mobileRatingOpen"
+      :title="participant.title"
+      :author="participant.author"
+      @close="closeMobileRating"
+      @rating-selected="handleMobileRating"
+    />
   </div>
 </template>
 
 <script>
 import ImageLightbox from './ImageLightbox.vue'
+import MobileRatingModal from './MobileRatingModal.vue'
 
 export default {
   name: 'ParticipantCard',
   components: {
-    ImageLightbox
+    ImageLightbox,
+    MobileRatingModal
   },
   props: {
     participant: {
@@ -94,7 +104,13 @@ export default {
       hoveredRating: 0,
       userVotes: 12,
       userRating: 4.7,
-      lightboxOpen: false
+      lightboxOpen: false,
+      mobileRatingOpen: false
+    }
+  },
+  computed: {
+    isMobile() {
+      return window.innerWidth <= 480;
     }
   },
   methods: {
@@ -108,7 +124,11 @@ export default {
       this.isLiked = !this.isLiked
     },
     startVoting() {
-      this.showStars = true
+      if (this.isMobile) {
+        this.mobileRatingOpen = true;
+      } else {
+        this.showStars = true;
+      }
     },
     selectRating(rating) {
       if (this.lightboxOpen) return;
@@ -120,6 +140,14 @@ export default {
         this.showStars = false
         this.showRating = true
       }, 500)
+    },
+    handleMobileRating(rating) {
+      this.selectedRating = rating;
+      this.userRating = (rating / 2).toFixed(1);
+      this.showRating = true;
+    },
+    closeMobileRating() {
+      this.mobileRatingOpen = false;
     },
     openLightbox() {
       this.lightboxOpen = true
@@ -178,6 +206,10 @@ export default {
   justify-content: center;
   padding: 6px;
   transition: background-color 0.2s;
+}
+
+.like-btn {
+  padding: 2px;
 }
 
 .action-btn:hover {
