@@ -6,8 +6,14 @@ import ProfileEditing from '../views/ProfileEditing.vue'
 import CompetitionAddition from '../views/CompetitionAddition.vue'
 import AddProductPage from '../views/AddProduct.vue'
 import Profile from '../views/ProfileView.vue'
+import Contest from '../views/ContestView.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'Contest',
+    component: Contest
+  },
   {
     path: '/',
     name: 'Profile',

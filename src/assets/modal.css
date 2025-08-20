@@ -290,6 +290,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
+  white-space: nowrap;
 }
 
 .info-label,
@@ -302,8 +303,8 @@
 }
 
 .info-label {
-  width: 100%;
-  word-wrap: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .counter-label,
@@ -317,6 +318,8 @@
   font-size: 18px;
   color: var(--primary-color);
   font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .counter-value {
