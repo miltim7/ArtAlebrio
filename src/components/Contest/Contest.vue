@@ -81,6 +81,7 @@ export default {
   data() {
     return {
       activeTab: "participants",
+      contestEnded: false,
     };
   },
   methods: {

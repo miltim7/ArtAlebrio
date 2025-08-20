@@ -17,6 +17,7 @@
             class="star-btn"
             @click="selectRating(star)"
           >
+            <span class="star-number">{{ star }}</span>
             <img 
               :src="(selectedRating >= star) ? '/images/contest/star-active.png' : '/images/contest/star.png'" 
               alt="" 
@@ -144,14 +145,16 @@ export default {
 .star-btn {
   background: none;
   border: none;
-  padding: 12px 8px;
+  padding: 8px;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
   border-radius: 8px;
+  gap: 4px;
 }
 
 .star-btn:hover {
@@ -161,6 +164,13 @@ export default {
 
 .star-btn:active {
   transform: scale(0.95);
+}
+
+.star-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3F3F3F;
+  margin-bottom: 2px;
 }
 
 .star-icon {
@@ -184,7 +194,11 @@ export default {
   }
   
   .star-btn {
-    padding: 8px 4px;
+    padding: 6px 4px;
+  }
+  
+  .star-number {
+    font-size: 12px;
   }
   
   .star-icon {
@@ -199,7 +213,11 @@ export default {
   }
   
   .star-btn {
-    padding: 6px 2px;
+    padding: 4px 2px;
+  }
+  
+  .star-number {
+    font-size: 11px;
   }
   
   .star-icon {
