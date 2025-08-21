@@ -69,7 +69,7 @@ export default {
       this.$emit('rating-selected', rating);
       setTimeout(() => {
         this.closeModal();
-      }, 300);
+      }, 800);
     },
     closeModal() {
       this.$emit('close');
