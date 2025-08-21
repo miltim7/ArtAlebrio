@@ -10,7 +10,7 @@
         </button>
         <button class="action-btn like-btn" @click="toggleLike">
           <img 
-            :src="isLiked ? '/images/contest/heart-active.png' : '/images/contest/heart.png'" 
+            :src="isLiked ? '/images/contest/like-active.png' : '/images/contest/like.png'" 
             alt="" 
             class="action-icon"
           >
@@ -26,7 +26,7 @@
         <img :src="participant.countryFlag" :alt="participant.country" class="country-flag">
       </div>
       
-      <div class="place-btn">
+      <div class="place-btn" :class="getPlaceClass(participant.place)">
         {{ getPlaceText(participant.place) }}
       </div>
     </div>
@@ -76,9 +76,17 @@ export default {
     },
     getPlaceText(place) {
       if (place === 1) return '1-е место'
-      if (place === 2) return '2-е место'
+      if (place === 2) return '2-е место'  
       if (place === 3) return '3-е место'
+      if (place === 4) return 'Приз зрительских симпатий'
       return `${place}-е место`
+    },
+    getPlaceClass(place) {
+      if (place === 1) return 'place-gold'
+      if (place === 2) return 'place-silver'
+      if (place === 3) return 'place-bronze'
+      if (place === 4) return 'place-viewers'
+      return 'place-other'
     }
   }
 }
@@ -102,6 +110,10 @@ export default {
   border-radius: 12px;
   background: white;
 }
+
+.like-btn {
+  padding: 2px !important;
+} 
 
 .card-image img {
   width: 100%;
@@ -192,8 +204,6 @@ export default {
 
 .place-btn {
   width: 100%;
-  background: #FFD700;
-  color: #8B4513;
   border: none;
   border-radius: 12px;
   padding: 12px;
@@ -201,6 +211,31 @@ export default {
   font-weight: 600;
   text-align: center;
   pointer-events: none;
+}
+
+.place-gold {
+  background: #FFD700;
+  color: #8B4513;
+}
+
+.place-silver {
+  background: #C0C0C0;
+  color: #4A4A4A;
+}
+
+.place-bronze {
+  background: #CD7F32;
+  color: #FFFFFF;
+}
+
+.place-viewers {
+  background: #42ADFF;
+  color: #FFFFFF;
+}
+
+.place-other {
+  background: #F3F4F6;
+  color: #6B7280;
 }
 
 @media (max-width: 480px) {
